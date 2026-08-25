@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import ApplyService from './pages/ApplyService';
 import PropertyTax from './pages/PropertyTax';
 import WaterBill from './pages/WaterBill';
 import TradeLicense from './pages/TradeLicense';
@@ -18,10 +19,11 @@ import ChatbotWidget from './components/ChatbotWidget';
 
 function App() {
   const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin') || location.pathname.startsWith('/officer');
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
-      <Header />
+      {!isAdminRoute && <Header />}
       <main id="main-content" className="flex-1 flex flex-col">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -29,7 +31,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<PlaceholderPage title="आमच्याबद्दल (About Us)" />} />
             <Route path="/services" element={<PlaceholderPage title="नागरिक सेवा (Citizen Services)" />} />
-            <Route path="/services/:id" element={<PlaceholderPage />} />
+            <Route path="/services/:id" element={<PlaceholderPage title="सेवा तपशील (Service Details)" />} />
+            <Route path="/apply/:id" element={<ApplyService />} />
             <Route path="/applications" element={<PlaceholderPage title="अर्जांची यादी (Applications)" />} />
             <Route path="/applications/track" element={<Track />} />
             <Route path="/complaints" element={<Complaint />} />
@@ -56,16 +59,14 @@ function App() {
             <Route path="/services/water-bill" element={<WaterBill />} />
             <Route path="/services/trade-license" element={<TradeLicense />} />
             <Route path="/services/certificate" element={<Certificate />} />
-            <Route path="/services/complaint" element={<Complaint />} />
-            <Route path="/track" element={<Track />} />
             
             {/* Fallback */}
             <Route path="*" element={<PlaceholderPage title="पृष्ठ आढळले नाही (404 Page Not Found)" />} />
           </Routes>
         </AnimatePresence>
       </main>
-      <Footer />
-      <ChatbotWidget />
+      {!isAdminRoute && <Footer />}
+      {!isAdminRoute && <ChatbotWidget />}
     </div>
   );
 }

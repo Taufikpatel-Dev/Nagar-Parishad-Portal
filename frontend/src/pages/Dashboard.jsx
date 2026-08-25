@@ -1,26 +1,36 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { ClipboardList, AlertTriangle, FileText, CheckCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ClipboardList, AlertCircle, FileText, CheckCircle, Clock, Search, ChevronRight, FileSearch, ShieldAlert, Download, Landmark, Eye } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { useMunicipality } from '../contexts/MunicipalityContext';
 
 const Dashboard = () => {
-  const { t } = useTranslation();
   const { session } = useAuth();
   const { currentMunicipality } = useMunicipality();
   
-  const [complaints, setComplaints] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
+  const [complaints, setComplaints] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
-    fetchUserData();
+  // For Demo purposes, if no session, we'll show dummy data
+  const isDemo = !session?.user;
+
+  useEffect(() => {
+    if (isDemo) {
+      // Load dummy data for UI demonstration
+      setComplaints([
+        { id: 'CMP-2026-0812', category: 'पाणीपुरवठा', status: 'In Process', date: '12 Aug 2026', ward: '4' },
+        { id: 'CMP-2026-0705', category: 'स्वच्छता', status: 'Resolved', date: '05 Jul 2026', ward: '4' },
+        { id: 'CMP-2026-0622', category: 'रस्ते', status: 'Resolved', date: '22 Jun 2026', ward: '4' },
+      ]);
+      setLoading(false);
+    } else {
+      fetchUserData();
+    }
   }, [session, currentMunicipality]);
 
   const fetchUserData = async () => {
     if (!session?.user || !currentMunicipality) return;
-    
     setLoading(true);
     const { data } = await supabase
       .from('complaints')
@@ -29,103 +39,199 @@ const Dashboard = () => {
       .eq('municipality_id', currentMunicipality.id)
       .order('created_at', { ascending: false })
       .limit(5);
-      
     if (data) setComplaints(data);
     setLoading(false);
   };
 
-  const handleReopen = async (id) => {
-    if(!window.confirm("Are you sure you want to re-open this complaint?")) return;
-    
-    await supabase
-      .from('complaints')
-      .update({ status: 'In Process' })
-      .eq('id', id);
-      
-    fetchUserData(); // refresh list
-  };
-
-  const pendingComplaints = complaints.filter(c => c.status === 'Pending' || c.status === 'In Process').length;
-  const resolvedComplaints = complaints.filter(c => c.status === 'Resolved').length;
-
-  // Stats
-  const stats = [
-    { label: 'Pending Complaints', value: pendingComplaints, icon: <AlertTriangle className="text-yellow-500" /> },
-    { label: 'Resolved Complaints', value: resolvedComplaints, icon: <CheckCircle className="text-green-500" /> },
-    { label: 'Active Applications', value: 0, icon: <FileText className="text-blue-500" /> },
+  const applications = [
+    { id: 'APP-PT-2026-9921', service: 'मालमत्ता कर नाव नोंदणी', status: 'Pending', date: '15 Aug 2026' },
+    { id: 'APP-BC-2026-8812', service: 'जन्म प्रमाणपत्र', status: 'Approved', date: '02 Aug 2026' }
   ];
 
+  const getStatusColor = (status) => {
+    switch(status.toLowerCase()) {
+      case 'resolved':
+      case 'approved': return 'bg-green-100 text-green-700 border-green-200';
+      case 'in process': return 'bg-blue-100 text-blue-700 border-blue-200';
+      case 'pending': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
+      default: return 'bg-slate-100 text-slate-700 border-slate-200';
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">My Dashboard</h2>
+    <div className="flex-1 bg-slate-50">
+      
+      {/* Dashboard Header */}
+      <div className="bg-[#0F172A] text-white pt-8 pb-16">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-bold font-marathi mb-1">नमस्कार, रमेश पाटील!</h1>
+            <p className="text-slate-400 text-sm font-marathi">नागरिक डॅशबोर्ड मध्ये आपले स्वागत आहे.</p>
+          </div>
+          <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-lg border border-white/20">
+            <div className="w-10 h-10 bg-slate-200 rounded-full overflow-hidden border-2 border-white">
+              <img src="https://api.dicebear.com/7.x/initials/svg?seed=RP&backgroundColor=15803d" alt="Profile" />
+            </div>
+            <div>
+              <p className="text-sm font-bold">Ramesh Patil</p>
+              <p className="text-xs text-slate-300">Ward No. 4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 -mt-8 relative z-10 pb-16">
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {stats.map((stat, idx) => (
-            <div key={idx} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border-l-4 border-primary">
+        {/* KPI Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div className="gov-card p-5 border-l-4 border-l-[#15803D]">
+            <div className="flex justify-between items-start">
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{stat.label}</p>
-                <p className="text-3xl font-bold text-gray-800 dark:text-white">{stat.value}</p>
+                <p className="text-sm text-slate-500 font-semibold mb-1">एकूण अर्ज</p>
+                <h3 className="text-3xl font-bold text-slate-800">१२</h3>
               </div>
-              <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-full">
-                {stat.icon}
+              <div className="p-3 bg-slate-100 rounded-lg text-[#15803D]">
+                <FileText size={24} />
               </div>
             </div>
-          ))}
+          </div>
+          
+          <div className="gov-card p-5 border-l-4 border-l-yellow-500">
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-sm text-slate-500 font-semibold mb-1">प्रलंबित अर्ज</p>
+                <h3 className="text-3xl font-bold text-slate-800">२</h3>
+              </div>
+              <div className="p-3 bg-yellow-50 rounded-lg text-yellow-600">
+                <Clock size={24} />
+              </div>
+            </div>
+          </div>
+          
+          <div className="gov-card p-5 border-l-4 border-l-blue-500">
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-sm text-slate-500 font-semibold mb-1">नोंदवलेल्या तक्रारी</p>
+                <h3 className="text-3xl font-bold text-slate-800">३</h3>
+              </div>
+              <div className="p-3 bg-blue-50 rounded-lg text-blue-600">
+                <ShieldAlert size={24} />
+              </div>
+            </div>
+          </div>
+          
+          <div className="gov-card p-5 border-l-4 border-l-red-500">
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-sm text-slate-500 font-semibold mb-1">थकबाकी (Rs.)</p>
+                <h3 className="text-3xl font-bold text-red-600">०.००</h3>
+              </div>
+              <div className="p-3 bg-red-50 rounded-lg text-red-600">
+                <Landmark size={24} />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Recent Complaints */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750 flex justify-between items-center">
-              <h3 className="font-semibold text-gray-800 dark:text-white flex items-center gap-2">
-                <ClipboardList size={18} className="text-primary" /> My Recent Complaints
-              </h3>
-              <Link to="/services/complaint" className="text-sm text-primary hover:underline">New Complaint</Link>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          {/* Recent Applications Table */}
+          <div className="lg:col-span-2 gov-card overflow-hidden">
+            <div className="bg-white px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+              <h2 className="text-lg font-bold text-slate-800 font-marathi flex items-center gap-2">
+                <FileSearch size={20} className="text-[#15803D]" /> माझे अलीकडील अर्ज
+              </h2>
+              <Link to="/applications" className="text-sm font-semibold text-[#15803D] hover:underline">सर्व पहा</Link>
             </div>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700">
-              {loading ? (
-                <div className="p-8 text-center text-gray-500">Loading...</div>
-              ) : complaints.length === 0 ? (
-                <div className="p-8 text-center text-gray-500">No recent complaints found.</div>
-              ) : (
-                complaints.map(c => (
-                  <div key={c.id} className="p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-750 transition">
-                    <div>
-                      <p className="font-medium text-gray-800 dark:text-gray-200">{c.category}</p>
-                      <p className="text-xs text-gray-500">ID: {c.id.substring(0,8)}... • Ward {c.ward}</p>
-                    </div>
-                    <div className="flex flex-col items-end gap-1">
-                      <span className={`text-xs px-2 py-1 rounded ${c.status === 'Resolved' ? 'bg-green-100 text-green-800' : c.status === 'In Process' ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800'}`}>
-                        {c.status}
-                      </span>
-                      {c.status === 'Resolved' && (
-                        <button onClick={() => handleReopen(c.id)} className="text-[10px] text-red-600 hover:underline mt-1">Re-open Issue</button>
-                      )}
-                    </div>
-                  </div>
-                ))
-              )}
+            
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-slate-50 text-slate-500 text-sm border-b border-slate-200">
+                    <th className="px-6 py-3 font-semibold">अर्ज क्रमांक</th>
+                    <th className="px-6 py-3 font-semibold">सेवेचे नाव</th>
+                    <th className="px-6 py-3 font-semibold">दिनांक</th>
+                    <th className="px-6 py-3 font-semibold">स्थिती</th>
+                    <th className="px-6 py-3 font-semibold text-right">कृती</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 text-sm">
+                  {applications.map((app, i) => (
+                    <tr key={i} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 font-semibold text-slate-700">{app.id}</td>
+                      <td className="px-6 py-4 font-marathi">{app.service}</td>
+                      <td className="px-6 py-4 text-slate-500">{app.date}</td>
+                      <td className="px-6 py-4">
+                        <span className={`px-2.5 py-1 rounded border text-xs font-bold uppercase tracking-wider ${getStatusColor(app.status)}`}>
+                          {app.status}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button className="p-1.5 text-slate-400 hover:text-[#15803D] hover:bg-[#15803D]/10 rounded transition-colors" title="पहा (View)">
+                          <Eye size={18} />
+                        </button>
+                        {app.status === 'Approved' && (
+                          <button className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors ml-1" title="डाउनलोड (Download)">
+                            <Download size={18} />
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
 
-          {/* Tax & Bills */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750">
-              <h3 className="font-semibold text-gray-800 dark:text-white flex items-center gap-2">
-                <FileText size={18} className="text-primary" /> Dues & Payments
-              </h3>
-            </div>
-            <div className="p-6 text-center">
-              <div className="bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 p-4 rounded-lg border border-green-200 dark:border-green-800 mb-4">
-                <p className="font-medium">All dues cleared!</p>
-                <p className="text-sm mt-1">Thank you for being a responsible citizen.</p>
+          {/* Side Panel: Complaints & Dues */}
+          <div className="space-y-6">
+            
+            <div className="gov-card overflow-hidden">
+              <div className="bg-white px-5 py-4 border-b border-slate-200 flex justify-between items-center">
+                <h2 className="text-lg font-bold text-slate-800 font-marathi flex items-center gap-2">
+                  <AlertCircle size={20} className="text-[#F97316]" /> माझ्या तक्रारी
+                </h2>
               </div>
-              <Link to="/services/property-tax" className="inline-block border border-primary text-primary px-4 py-2 rounded text-sm hover:bg-primary hover:text-white transition">
-                View Payment History
-              </Link>
+              <div className="divide-y divide-slate-100 p-2">
+                {complaints.length > 0 ? complaints.map((c, i) => (
+                  <div key={i} className="p-3 hover:bg-slate-50 rounded-lg transition-colors">
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-bold text-slate-800 font-marathi">{c.category}</h4>
+                      <span className={`text-[10px] px-2 py-0.5 rounded font-bold uppercase ${getStatusColor(c.status)}`}>
+                        {c.status}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs text-slate-500">
+                      <span>{c.id}</span>
+                      <span>{c.date || new Date(c.created_at).toLocaleDateString()}</span>
+                    </div>
+                  </div>
+                )) : (
+                  <div className="p-6 text-center text-slate-500 text-sm">कोणतीही तक्रार आढळली नाही.</div>
+                )}
+                <div className="p-3 text-center border-t border-slate-100 mt-2">
+                  <Link to="/complaints" className="text-sm font-bold text-[#15803D] hover:underline">नवीन तक्रार नोंदवा</Link>
+                </div>
+              </div>
             </div>
+            
+            <div className="gov-card overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+              <div className="p-6 text-center">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-green-600 border border-green-100">
+                  <CheckCircle size={32} />
+                </div>
+                <h3 className="text-xl font-bold text-green-800 font-marathi mb-2">कोणतीही थकबाकी नाही!</h3>
+                <p className="text-green-600 text-sm font-marathi mb-6">
+                  आपले सर्व कर भरलेले आहेत. एक जबाबदार नागरिक असल्याबद्दल धन्यवाद.
+                </p>
+                <Link to="/payments" className="gov-btn-outline !border-green-600 !text-green-700 hover:!bg-green-600 hover:!text-white w-full block">
+                  पेमेंट इतिहास पहा
+                </Link>
+              </div>
+            </div>
+
           </div>
+          
         </div>
       </div>
     </div>
