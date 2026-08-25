@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1d4ed8;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Accessibility classes */
+.a11y-font-small { font-size: 0.875rem !important; }
+.a11y-font-normal { font-size: 1rem !important; }
+.a11y-font-large { font-size: 1.125rem !important; }
+
+.a11y-spacing-normal { letter-spacing: normal !important; }
+.a11y-spacing-wide { letter-spacing: 0.1em !important; }
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .bg-white {
+  background-color: #1e1e1e !important;
+}
+
+.dark-mode .text-gray-900 {
+  color: #f3f4f6 !important;
+}
+
+.dark-mode .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark-mode .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --color-primary: #ffff00;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.high-contrast * {
+  border-color: #ffff00 !important;
+}
+.high-contrast a, .high-contrast button {
+  color: #ffff00 !important;
+}
+.high-contrast .bg-white {
+  background-color: #000000 !important;
+}

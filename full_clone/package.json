@@ -1,0 +1,9 @@
+{
+  "name": "full-clone",
+  "version": "1.0.0",
+  "description": "Scrape full solapur website",
+  "main": "scraper.js",
+  "dependencies": {
+    "website-scraper": "^5.3.1"
+  }
+}

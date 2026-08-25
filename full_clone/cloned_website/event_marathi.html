@@ -1,0 +1,3745 @@
+<!DOCTYPE html><html lang="mr" dir="ltr" data-theme="light"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    
+    ई-न्यूज | सोलापूर महानगरपालिका 
+
+</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon_smc.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Yeseva+One&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --navy:        #00204A;
+  --blue:        #1A5F7A;
+  --teal:        #57C5B6;
+  --saffron:     #FF6B1A;
+  --saffron-lt:  #FFF0E6;
+  --india-green: #138808;
+  --bg:          #F4F7FB;
+  --bg2:         #FFFFFF;
+  --bg3:         #EBF0F8;
+  --surface:     #FFFFFF;
+  --text:        #0D1B2A;
+  --text2:       #3D5166;
+  --text3:       #7A8FA6;
+  --border:      rgba(0,32,74,0.10);
+  --shadow-sm:   0 1px 4px rgba(0,32,74,0.07);
+  --shadow-md:   0 4px 20px rgba(0,32,74,0.10);
+  --shadow-lg:   0 10px 40px rgba(0,32,74,0.14);
+  --header-grad: linear-gradient(135deg,#00204A 0%,#1A5F7A 100%);
+  --focus-ring:  #FF6B1A;
+  --fs-base:  16px;
+  --fs-scale: 1;
+  --lh-scale: 1;
+  --tts-hl: #FFF176;
+}
+[data-theme="dark"] {
+  --bg:      #0D1B2A; --bg2: #142236; --bg3: #1A2B42;
+  --surface: #1A2B42; --text: #E8EEFF; --text2: #8BAAC8;
+  --text3:   #5A7A96; --border: rgba(232,238,255,0.10);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.30);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.35);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.45);
+  --header-grad: linear-gradient(135deg,#060F1A 0%,#0D1B2A 100%);
+}
+[data-theme="hc"] {
+  --bg:#000; --bg2:#000; --bg3:#111; --surface:#000;
+  --text:#FFFF00; --text2:#FFF; --text3:#CCC;
+  --border:#FFFF00; --focus-ring:#FFFF00;
+  --navy:#FFFF00; --blue:#FFFF00; --teal:#00FFFF;
+  --saffron:#FF6600; --saffron-lt:#220D00;
+  --header-grad:linear-gradient(135deg,#000 0%,#111 100%);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:calc(var(--fs-base)*var(--fs-scale));line-height:calc(1.65*var(--lh-scale));scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;color:var(--text);background:var(--bg);transition:background .3s,color .3s;}
+img{max-width:100%;display:block}
+a{color:var(--blue);text-decoration:none}
+*:focus-visible{outline:3px solid var(--focus-ring)!important;outline-offset:3px;border-radius:4px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-links{position:absolute;top:-200%;left:0;z-index:99999;display:flex;gap:8px;padding:8px}
+.skip-links a{background:var(--saffron);color:#fff;font-weight:700;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:.88rem;}
+.skip-links:focus-within{top:0}
+#a11y-bar{
+  background:#00204A;
+  padding:0 1.25rem;
+  display:flex;align-items:center;gap:5px;flex-wrap:wrap;
+  min-height:46px;
+  position:sticky;top:0;z-index:600;
+  border-bottom:2px solid var(--saffron);
+}
+.ab-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-right:3px;white-space:nowrap;}
+.ab-sep{width:1px;height:20px;background:rgba(255,255,255,.15);margin:0 4px;flex-shrink:0}
+.ab-group{display:flex;align-items:center;gap:3px}
+.ab-btn{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.85);
+  padding:4px 11px;border-radius:7px;
+  font-size:.74rem;font-weight:600;font-family:'Outfit',sans-serif;
+  cursor:pointer;white-space:nowrap;line-height:1.2;
+  transition:background .2s;
+}
+.ab-btn:hover,.ab-btn:focus-visible{background:rgba(255,255,255,.18);color:#fff}
+.ab-btn.on{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.ab-btn.theme-active{background:#fff;color:#00204A;border-color:#fff}
+.ab-tts-live{margin-left:auto;font-size:.68rem;color:rgba(255,255,255,.45);font-style:italic;white-space:nowrap;}
+#ab-progress{width:100px;height:3px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden;flex-shrink:0;display:none}
+#ab-fill{height:100%;background:var(--saffron);width:0;transition:width .3s}
+.top-strip{
+  background:var(--header-grad);
+  padding:7px 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+.top-social{display:flex;gap:6px}
+.top-social a{
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.85);font-size:.8rem;
+  transition:background .2s;
+}
+.top-social a:hover{background:rgba(255,255,255,.25);color:#fff}
+.top-emergency{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.8);font-size:.78rem;flex-wrap:wrap;}
+.top-emergency span{display:flex;align-items:center;gap:5px}
+.top-emergency a{color:rgba(255,255,255,.9);text-decoration:none}
+.top-actions{display:flex;gap:6px;flex-wrap:wrap}
+.ta-btn{
+  display:flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+  color:rgba(255,255,255,.9);padding:5px 12px;border-radius:7px;
+  font-size:.76rem;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;
+  text-decoration:none;transition:background .2s;
+}
+.ta-btn:hover{background:rgba(255,255,255,.22);color:#fff}
+.main-header{background:var(--header-grad);padding:16px 1.5rem 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.mh-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.10);}
+.logo-wrap{display:flex;align-items:center;gap:14px}
+.logo-img{width:100px;height:100px;border-radius:50%;border:3px solid rgba(255,255,255,.3);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;font-weight:800;flex-shrink:0;}
+.logo-img img{width:100%;height:100%;object-fit:cover}
+.logo-text h1{color:#fff;font-family:'Yeseva One',serif;font-size:1.35rem;line-height:1.2;margin:0;}
+.logo-text p{color:rgba(255,255,255,.6);font-size:.74rem;margin-top:3px}
+.hdr-search{display:flex;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;overflow:hidden;transition:background .2s;max-width:460px;width:100%;}
+.hdr-search:focus-within{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.45)}
+.hdr-search input{flex:1;background:none;border:none;outline:none;color:#fff;font-family:'Outfit',sans-serif;font-size:.88rem;padding:10px 14px;}
+.hdr-search input::placeholder{color:rgba(255,255,255,.5)}
+.hdr-search button{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);padding:8px 14px;font-size:.95rem;transition:color .2s;}
+.hdr-search button:hover{color:#fff}
+#voice-hdr-btn.listening{color:var(--saffron);animation:mic-pulse .9s infinite}
+@keyframes mic-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.2)}}
+#hdr-search-drop{position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);z-index:400;overflow:hidden;display:none;}
+#hdr-search-drop.open{display:block}
+.sd-item{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s;}
+.sd-item:last-child{border-bottom:none}
+.sd-item:hover,.sd-item:focus{background:var(--bg3);outline:none}
+.sd-ico{font-size:1.05rem;width:28px;text-align:center;flex-shrink:0}
+.sd-title{font-size:.86rem;font-weight:600;color:var(--text)}
+.sd-sub{font-size:.72rem;color:var(--text3)}
+.sd-empty{padding:14px;text-align:center;color:var(--text3);font-size:.85rem}
+.hdr-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.ha-btn{display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.9);padding:8px 14px;border-radius:10px;font-size:.7rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;min-width:64px;}
+.ha-btn i{font-size:1.05rem}
+.ha-btn:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.nav-bar{background:var(--header-grad);position:sticky;top:46px;z-index:500;border-top:1px solid rgba(255,255,255,.08);}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.main-nav{display:flex;list-style:none;gap:0}
+.main-nav>li{position:relative}
+.main-nav>li>a{display:flex;align-items:center;gap:7px;padding:15px 16px;color:rgba(255,255,255,.85);font-size:.82rem;font-weight:500;text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s,background .2s;white-space:nowrap;}
+.main-nav>li>a:hover,.main-nav>li>a:focus-visible,.main-nav>li:hover>a,.main-nav>li:focus-within>a{color:#fff;border-bottom-color:var(--saffron);background:rgba(255,255,255,.08);}
+.submenu{position:absolute;top:100%;left:0;background:var(--surface);min-width:240px;box-shadow:var(--shadow-lg);border-radius:0 0 14px 14px;border:1px solid var(--border);border-top:none;list-style:none;z-index:600;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s;}
+.main-nav>li:hover .submenu,.main-nav>li:focus-within .submenu{opacity:1;transform:translateY(0);pointer-events:auto;}
+.submenu a{display:flex;align-items:center;gap:10px;padding:12px 18px;color:var(--text2);font-size:.82rem;border-bottom:1px solid var(--border);transition:background .15s,color .15s,padding .15s;}
+.submenu a:last-child{border-bottom:none}
+.submenu a:hover,.submenu a:focus-visible{background:var(--bg3);color:var(--navy);padding-left:24px;}
+.submenu a i{color:var(--teal);width:18px;text-align:center;flex-shrink:0}
+.submenu .submenu{top:0;left:100%;border-radius:0 14px 14px 14px}
+.submenu li:hover>.submenu,.submenu li:focus-within>.submenu{opacity:1;transform:translateY(0);pointer-events:auto;}
+.has-sub>a::after{content:'\f078';font-family:'Font Awesome 6 Free';font-weight:900;font-size:.65rem;margin-left:4px;transition:transform .2s}
+.has-sub:hover>a::after,.has-sub:focus-within>a::after{transform:rotate(180deg)}
+.mob-menu-btn{display:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:8px 12px;border-radius:8px;cursor:pointer;font-size:1.1rem;}
+.hero{position:relative;height:68vh;min-height:480px;overflow:hidden;background:var(--navy);}
+.slide{display:none;position:absolute;inset:0}
+.slide.active{display:block}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,32,74,.75) 0%,rgba(0,32,74,.2) 70%);display:flex;align-items:center;padding:0 8%;}
+.slide-text h2{font-family:'Yeseva One',serif;font-size:clamp(2rem,4vw,3.2rem);color:#fff;line-height:1.15;margin-bottom:14px;text-shadow:0 2px 12px rgba(0,0,0,.4);}
+.slide-text p{color:rgba(255,255,255,.8);font-size:1rem;max-width:520px;line-height:1.7}
+.slide-text .hero-btns{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.hero-btn-primary{background:var(--saffron);color:#fff;padding:11px 26px;border-radius:50px;font-weight:700;font-size:.9rem;font-family:'Outfit',sans-serif;border:none;cursor:pointer;text-decoration:none;box-shadow:0 4px 16px rgba(255,107,26,.4);transition:background .2s,transform .15s;}
+.hero-btn-primary:hover{background:#e05800;transform:translateY(-2px)}
+.hero-btn-outline{background:rgba(255,255,255,.12);color:#fff;padding:11px 26px;border-radius:50px;font-weight:600;font-size:.9rem;border:1px solid rgba(255,255,255,.35);cursor:pointer;text-decoration:none;font-family:'Outfit',sans-serif;transition:background .2s;}
+.hero-btn-outline:hover{background:rgba(255,255,255,.22)}
+.slide-prev,.slide-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);backdrop-filter:blur(4px);color:#fff;border:none;width:48px;height:48px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10;}
+.slide-prev{left:20px}.slide-next{right:20px}
+.slide-prev:hover,.slide-next:hover{background:rgba(255,255,255,.38)}
+.dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10;}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.45);border:none;cursor:pointer;transition:background .2s,transform .2s;}
+.dot.active{background:#fff;transform:scale(1.25)}
+@keyframes hero-fade{from{opacity:.3}to{opacity:1}}
+.slide.active{animation:hero-fade .8s ease}
+.services-strip{background:var(--surface);box-shadow:var(--shadow-md);padding:0 1.5rem;position:relative;z-index:10;}
+.ss-inner{max-width:1400px;margin:0 auto;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.ss-inner::-webkit-scrollbar{display:none}
+.ss-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 22px;min-width:110px;cursor:pointer;border-bottom:3px solid transparent;color:var(--text2);font-size:.76rem;font-weight:600;text-decoration:none;transition:color .2s,border-color .2s,background .2s;flex-shrink:0;text-align:center;}
+.ss-item i{font-size:1.35rem;color:var(--blue)}
+.ss-item:hover,.ss-item:focus-visible{color:var(--navy);border-bottom-color:var(--saffron);background:var(--saffron-lt);}
+[data-theme="dark"] .ss-item i{color:var(--teal)}
+main{max-width:1400px;margin:0 auto;padding:2.5rem 1.5rem}
+.section-label{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--saffron);margin-bottom:5px}
+.section-title{font-family:'Yeseva One',serif;font-size:1.8rem;color:var(--text);margin-bottom:6px}
+.section-sub{color:var(--text3);font-size:.9rem;max-width:520px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:2.5rem 0;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center;box-shadow:var(--shadow-sm);border-top:3px solid var(--teal);transition:transform .2s,box-shadow .2s;}
+.stat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.stat-num{font-family:'Yeseva One',serif;font-size:1.9rem;color:var(--blue);display:block;line-height:1;margin-bottom:4px;}
+[data-theme="dark"] .stat-num{color:var(--teal)}
+.stat-lbl{font-size:.76rem;color:var(--text3)}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:2rem}
+.dash-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;text-decoration:none;display:block;color:inherit;}
+.dash-card:hover,.dash-card:focus-visible{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.dc-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden;}
+.dc-body{padding:1.2rem}
+.dc-tag{display:inline-flex;align-items:center;gap:4px;background:rgba(26,95,122,.1);color:var(--blue);font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:6px;margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase;}
+[data-theme="dark"] .dc-tag{background:rgba(87,197,182,.15);color:var(--teal)}
+.dc-title{font-family:'Yeseva One',serif;font-size:.98rem;color:var(--text);margin-bottom:6px;line-height:1.35}
+.dc-desc{font-size:.8rem;color:var(--text2);line-height:1.6}
+.dc-meta{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:.72rem;color:var(--text3);}
+.dc-meta i{color:var(--teal)}
+.info-banner{background:var(--header-grad);border-radius:20px;padding:2.5rem;margin:3rem 0;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;position:relative;overflow:hidden;}
+.info-banner::before{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04);}
+.info-banner::after{content:'';position:absolute;right:100px;bottom:-60px;width:160px;height:160px;border-radius:50%;background:rgba(87,197,182,.10);}
+.info-banner h2{font-family:'Yeseva One',serif;font-size:1.7rem;color:#fff;margin-bottom:8px}
+.info-banner p{color:rgba(232,238,255,.65);font-size:.9rem}
+.btn-banner{background:#fff;color:var(--navy);padding:12px 26px;border-radius:10px;font-weight:700;font-size:.88rem;white-space:nowrap;text-decoration:none;display:inline-block;transition:transform .2s;position:relative;z-index:1;}
+.btn-banner:hover{transform:translateY(-2px)}
+.scroller-section{padding:2.5rem 0}
+.scroller-wrapper{position:relative;display:flex;align-items:center;gap:10px;max-width:1400px;margin:0 auto;padding:0 1.5rem;}
+.scroller-viewport{overflow:hidden;flex:1}
+.scroller-track{display:flex;gap:20px;padding:16px 4px;transition:transform .5s cubic-bezier(.4,0,.2,1);width:max-content;}
+.scroller-item{flex:0 0 130px;text-align:center;transition:transform .2s;}
+.scroller-item:hover{transform:translateY(-5px)}
+.scroller-logo{width:110px;height:110px;object-fit:contain;border-radius:12px;background:var(--surface);padding:12px;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:box-shadow .2s;}
+.scroller-logo:hover{box-shadow:var(--shadow-md)}
+.scroll-arrow{background:var(--surface);border:1px solid var(--border);width:42px;height:42px;border-radius:50%;box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:.95rem;flex-shrink:0;transition:background .2s,box-shadow .2s;}
+.scroll-arrow:hover{background:var(--bg3);box-shadow:var(--shadow-md)}
+.scroll-arrow:disabled{opacity:.3;cursor:not-allowed}
+footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 1.5rem 2rem;margin-top:3rem;}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;margin-bottom:2.5rem;}
+.fc-heading{font-family:'Yeseva One',serif;font-size:1rem;color:#fff;margin-bottom:16px;position:relative;padding-bottom:10px;}
+.fc-heading::after{content:'';position:absolute;left:0;bottom:0;width:36px;height:2px;background:var(--teal);}
+.fc-links{list-style:none}
+.fc-links li{margin-bottom:10px}
+.fc-links a{color:rgba(255,255,255,.65);font-size:.82rem;display:flex;align-items:center;gap:7px;text-decoration:none;transition:color .2s,transform .2s;}
+.fc-links a:hover,.fc-links a:focus-visible{color:#fff;transform:translateX(5px)}
+.fc-links i{color:var(--teal);width:14px;flex-shrink:0}
+.footer-bottom{padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;}
+.footer-bottom p{font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.8;max-width:780px}
+.ft-social{display:flex;gap:10px;flex-shrink:0}
+.ft-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;font-size:.85rem;text-decoration:none;transition:background .2s,color .2s;}
+.ft-social a:hover{background:var(--teal);color:#fff}
+body.tts-mode [data-tts]{cursor:pointer;border-radius:4px;transition:background .15s;}
+body.tts-mode [data-tts]:hover{background:rgba(255,241,118,.35)}
+body.tts-mode [data-tts].reading{background:rgba(255,241,118,.55);outline:2px dashed #F9A825}
+#scroll-top{position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;background:var(--header-grad);color:#fff;border:none;cursor:pointer;font-size:1rem;box-shadow:var(--shadow-md);display:none;align-items:center;justify-content:center;z-index:800;transition:transform .2s,box-shadow .2s;}
+#scroll-top:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+#scroll-top.show{display:flex}
+#toast{position:fixed;bottom:80px;right:24px;background:var(--navy);color:#fff;padding:11px 18px;border-radius:10px;font-size:.82rem;font-weight:500;box-shadow:var(--shadow-lg);z-index:9999;transform:translateY(60px);opacity:0;transition:transform .28s,opacity .28s;border-left:4px solid var(--saffron);max-width:300px;}
+[data-theme="dark"] #toast{background:#1A2B42}
+#toast.show{transform:translateY(0);opacity:1}
+@media(max-width:1024px){.mh-inner{grid-template-columns:1fr auto;gap:14px}.hdr-search{display:none}.stats-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.main-nav{display:none}.mob-menu-btn{display:block}.main-nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--navy);z-index:700;box-shadow:var(--shadow-lg);}.main-nav.open>li>a{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08)}.main-nav.open .submenu{position:static;opacity:1;transform:none;pointer-events:auto;display:none;border-radius:0;box-shadow:none;border:none;min-width:100%;}.main-nav.open .submenu.mob-open{display:block}.main-nav.open .submenu a{padding-left:32px}.info-banner{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.top-emergency{display:none}.mh-inner{grid-template-columns:1fr auto}#a11y-bar .ab-label{display:none}}
+@media(max-width:480px){.stats-row{grid-template-columns:1fr 1fr}.hdr-actions{gap:4px}.ha-btn{padding:6px 10px;min-width:54px;font-size:.65rem}}
+</style>
+
+      <!-- सोलापूर शहर एक्सप्लोर करा -->
+  <style>
+    .exc-wrap { padding: 48px 32px 64px; background: #f8fafc; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .exc-title { text-align: center; font-size: 2.4rem; font-weight: 700; color: #0b2b3b; margin-bottom: 42px; font-family: 'Yeseva One', serif; letter-spacing: -0.2px; background: linear-gradient(135deg, #1E3C4C, #2A5F6E); background-clip: text; -webkit-background-clip: text; color: transparent; text-shadow: none; }
+    [data-theme="dark"] .exc-wrap { background: #0a1424; }
+    [data-theme="dark"] .exc-title { background: linear-gradient(135deg, #C0DFF5, #A3C9E8); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .exc-card { display: grid; grid-template-columns: 55% 45%; border-radius: 36px; overflow: hidden; min-height: 500px; max-width: 1280px; margin: 0 auto; box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.05); transition: transform 0.2s ease; background: transparent; }
+    .exc-left { position: relative; background: #102b36; min-height: 480px; overflow: hidden; }
+    .exc-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1); pointer-events: none; }
+    .exc-slide.active { opacity: 1; pointer-events: auto; }
+    .exc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .exc-slide-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 5.5rem; background: linear-gradient(145deg, #1f4155, #0d2c3b); }
+    .exc-grad { position: absolute; bottom: 0; left: 0; right: 0; height: 55%; background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2), transparent); pointer-events: none; }
+    .exc-pname { position: absolute; bottom: 78px; left: 28px; font-family: 'Yeseva One', serif; font-size: 1.9rem; font-weight: 700; color: #fff; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); z-index: 10; letter-spacing: 0.5px; backdrop-filter: blur(2px); }
+    .exc-controls { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; z-index: 10; background: rgba(10, 25, 35, 0.55); backdrop-filter: blur(10px); padding: 8px 18px; border-radius: 60px; border: 1px solid rgba(255, 255, 255, 0.2); }
+    .exc-cbtn { width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.2s ease; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: white; backdrop-filter: blur(4px); }
+    .exc-cbtn.arr:hover { background: rgba(255, 255, 255, 0.45); transform: scale(1.03); }
+    .exc-cbtn.play { background: #ff5e6b; color: white; font-size: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+    .exc-cbtn.play:hover { background: #e24451; transform: scale(1.02); }
+    .exc-right { position: relative; background: radial-gradient(circle at 20% 30%, #1B4F6E, #0A2C3E); background-blend-mode: overlay; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 36px 32px; backdrop-filter: blur(0px); box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05); animation: softGlow 8s infinite alternate ease-in-out; background-size: 100% 100%; }
+    .exc-right::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(115deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(255, 255, 255, 0.1) 100%); pointer-events: none; z-index: 1; }
+    .exc-bg-svg { position: absolute; bottom: 0; left: 0; width: 100%; pointer-events: none; opacity: 0.7; z-index: 1; }
+    .exc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; position: relative; z-index: 12; }
+    .exc-icon-btn { border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 28px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(4px); padding: 32px 12px 26px; display: flex; flex-direction: column; align-items: center; gap: 14px; cursor: pointer; text-decoration: none; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+    .exc-icon-btn:hover { background: rgba(255, 255, 255, 0.25); border-color: rgba(255, 255, 255, 0.85); transform: translateY(-6px); box-shadow: 0 18px 28px -12px rgba(0, 0, 0, 0.35); backdrop-filter: blur(6px); }
+    .exc-icon-btn svg { width: 42px; height: 42px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); transition: transform 0.2s; }
+    .exc-icon-btn:hover svg { transform: scale(1.02); }
+    .exc-icon-btn span { font-size: 0.95rem; font-weight: 600; color: #ffffff; text-align: center; line-height: 1.35; font-family: 'Outfit', sans-serif; letter-spacing: 0.3px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+    @media (max-width: 860px) { .exc-card { grid-template-columns: 1fr; grid-template-rows: 320px auto; border-radius: 28px; } .exc-left { min-height: 320px; } .exc-right { padding: 32px 24px; } .exc-pname { font-size: 1.6rem; bottom: 68px; } .exc-title { font-size: 2rem; } }
+    @media (max-width: 550px) { .exc-wrap { padding: 32px 16px 48px; } .exc-grid { gap: 14px; } .exc-icon-btn { padding: 24px 8px 20px; } .exc-icon-btn svg { width: 34px; height: 34px; } .exc-icon-btn span { font-size: 0.8rem; } .exc-controls { gap: 12px; padding: 5px 14px; } .exc-cbtn { width: 38px; height: 38px; font-size: 16px; } }
+    @keyframes softGlow { 0% { background: radial-gradient(circle at 20% 30%, #1B5A7A, #0A2C3E); } 100% { background: radial-gradient(circle at 70% 40%, #1F6A8A, #083B4F); } }
+  </style>
+
+    <!-- इतर सरकारी संकेतस्थळे स्क्रॉलर -->
+<style>
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .scroller-section { position: relative; padding: 30px 20px 70px 20px; max-width: 1400px; margin: 0 auto; background: #ffffff; border-radius: 32px; box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1); transition: box-shadow 0.2s; }
+  .section-heading { text-align: center; margin-bottom: 32px; font-size: 2rem; font-weight: 700; color: #0f2b3d; letter-spacing: -0.3px; border-left: 6px solid #1e4a76; padding-left: 1.2rem; display: inline-block; width: auto; margin-left: auto; margin-right: auto; background: linear-gradient(135deg, #0f2b3d 0%, #1e4a76 100%); background-clip: text; -webkit-background-clip: text; color: transparent; text-shadow: none; }
+  .scroller-wrapper { position: relative; display: flex; align-items: center; gap: 12px; outline: none; padding: 8px 0; }
+  .scroll-btn { background: white; border: none; width: 48px; height: 48px; border-radius: 60px; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1); flex-shrink: 0; z-index: 12; background-color: #ffffff; border: 1px solid #e2edf2; color: #1e4a76; }
+  .scroll-btn:hover { background: #e8f0fe; transform: scale(1.05); box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12); color: #0a3a5a; }
+  .scroll-btn.disabled { opacity: 0.4; cursor: default; pointer-events: none; transform: none; background: #f4f9fe; }
+  .scroller-container-wrapper { overflow: hidden; flex: 1; position: relative; border-radius: 24px; }
+  .scroller-container { display: flex; gap: 30px; transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1); padding: 20px 8px; margin: 0; list-style: none; width: max-content; }
+  .website-item { flex: 0 0 auto; width: 200px; text-align: center; transition: transform 0.25s ease; }
+  .website-item:hover { transform: translateY(-6px); }
+  .logo-link { display: block; text-decoration: none; border-radius: 18px; transition: all 0.2s; }
+  .logo-img1 { width: 200px; height: 55px; object-fit: contain; background: #ffffff; border-radius: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border: 1px solid #eef2f6; padding: 6px 12px; transition: box-shadow 0.2s, border-color 0.2s; display: block; margin: 0 auto; }
+  .logo-img1:hover { box-shadow: 0 14px 22px rgba(0, 0, 0, 0.1); border-color: #cbdbe0; }
+  .website-name { display: block; margin-top: 10px; font-size: 0.85rem; font-weight: 600; color: #1e3a5f; text-decoration: none; letter-spacing: 0.3px; background: #f9fcff; padding: 5px 8px; border-radius: 40px; transition: background 0.2s, color 0.2s; }
+  .logo-link:hover .website-name { background: #e1effa; color: #0f4c71; }
+  .auto-scroll-controls { position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); display: flex; gap: 14px; z-index: 20; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 60px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08); border: 1px solid rgba(30, 74, 118, 0.15); }
+  .control-btn { background: #1e4a76; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+  .control-btn:hover { background: #2c628f; transform: scale(1.06); }
+  .control-btn svg { stroke: white; width: 18px; height: 18px; }
+  .hidden { display: none !important; }
+  #carousel-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  @media (max-width: 760px) { .scroller-section { padding: 20px 15px 70px 15px; margin: 0 1rem; } .scroll-btn { width: 42px; height: 42px; } .website-item { width: 200px; } .logo-img1 { width: 200px; height: 55px; } .section-heading { font-size: 1.7rem; } .auto-scroll-controls { bottom: -12px; } }
+  @media (max-width: 520px) { .scroller-container { gap: 20px; } .scroll-btn { width: 38px; height: 38px; } }
+  @media (prefers-reduced-motion: reduce) { .scroller-container { transition: none; } .scroll-btn:hover { transform: none; } .website-item:hover { transform: none; } }
+  .scroller-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #1e4a76, #5fa7cf, #1e4a76); border-radius: 32px 32px 0 0; }
+   @media print {
+    .exc-title {
+        display: block !important;
+        visibility: visible !important;
+        color: black !important;
+    }
+}
+
+</style>
+
+        <!-- n8n chat base styles -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet">
+
+<style>
+    :root {
+        --chat--color-primary: hsl(213, 100%, 30%); /* deep blue (menu/header) */
+        --chat--color-primary-shade-50: hsl(213, 100%, 25%);
+        --chat--color-primary-shade-100: hsl(213, 100%, 20%);
+        --chat--color-white: hsl(0, 0%, 100%); /* pure white */
+        --chat--color-light: hsl(0, 0%, 93%); /* light gray bg */
+        --chat--color-light-shade-50: hsl(0, 0%, 92%);
+        --chat--color-light-shade-100: hsl(0, 0%, 85%);
+        --chat--color-medium: hsl(210, 8%, 40%); /* medium gray text */
+        --chat--color-dark: hsl(210, 16%, 10%); /* dark gray text */
+        --chat--color-disabled: hsl(210, 8%, 70%);
+        --chat--color-typing: hsl(210, 10%, 35%);
+        --chat--input--send--button--color: hsl(6, 100%, 30%); /* deep blue (menu/header) */
+
+        --chat--spacing: 0.9rem;
+        --chat--border-radius: 16px;
+        --chat--transition-duration: 0.2s;
+        /* Desktop window size */
+        --chat--window--width: 420px;
+        --chat--window--height: 620px;
+        /* Header */
+        --chat--header-height: auto;
+        --chat--header--padding: calc(var(--chat--spacing) * 1.1);
+        --chat--header--background: linear-gradient(135deg, var(--chat--color-primary) 0%, var(--chat--color-secondary) 100%);
+        --chat--header--color: var(--chat--color-dark);
+        --chat--heading--font-size: 1.1rem;
+        --chat--subtitle--font-size: 0.9rem;
+        --chat--subtitle--line-height: 1.6;
+        /* Messages */
+        --chat--message--font-size: 0.98rem;
+        --chat--message--padding: calc(var(--chat--spacing) * 0.9);
+        --chat--message--border-radius: 14px;
+        --chat--message-line-height: 1.7;
+        --chat--message--bot--background: rgba(255, 255, 255, 0.9);
+        --chat--message--bot--color: hsl(211, 36%, 22%);
+        --chat--message--bot--border: 1px solid rgba(17, 24, 39, 0.06);
+        --chat--message--user--background: var(--chat--color-primary);
+        --chat--message--user--color: hsl(0, 100%, 50%);
+        --chat--message--user--border: none;
+        --chat--message--pre--background: rgba(17, 24, 39, 0.06);
+        /* Input */
+        --chat--textarea--height: 60px;
+        /* Toggle (launcher) */
+        --chat--toggle--size: 64px;
+        --chat--toggle--background: linear-gradient(135deg, var(--chat--color-primary) 0%, var(--chat--color-secondary-shade-50) 100%) !important;
+        --chat--toggle--hover--background: linear-gradient(135deg, var(--chat--color-primary-shade-50) 0%, var(--chat--color-secondary-shade-50) 100%);
+        --chat--toggle--active--background: linear-gradient(135deg, var(--chat--color-primary-shade-100) 0%, var(--chat--color-secondary-shade-50) 100%);
+        --chat--toggle--color: var(--chat--color-white);
+    }
+
+    /* Page background (subtle gradient) */
+    html, body {
+        height: 100%;
+        margin: 0;
+        background: radial-gradient(1200px 800px at 100% -10%, rgba(68, 245, 153, 0.12), transparent 45%), radial-gradient(1000px 700px at -10% 110%, rgba(67, 220, 230, 0.12), transparent 45%), linear-gradient(180deg, #f9fbfc 0%, #eef5f7 100%);
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+        color: var(--chat--color-dark);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Position the floating button with safe-area */
+    .chat-toggle {
+        right: max(20px, env(safe-area-inset-right));
+        bottom: max(150px, env(safe-area-inset-bottom));
+        border-radius: 9999px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 6px 12px rgba(0,0,0,0.1);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        transition: transform var(--chat--transition-duration), box-shadow var(--chat--transition-duration);
+    }
+
+        .chat-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.22), 0 8px 16px rgba(0,0,0,0.12);
+        }
+    /* Stronger visible chat container */
+    .chat-window {
+        background: #ffffff !important; /* fully opaque */
+        border: 2px solid rgba(0, 0, 0, 0.14) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28), 0 8px 18px rgba(0, 0, 0, 0.18) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .chat-header {
+        position: relative;
+        padding-left: 160px !important; /* leave space for logo */
+        background: linear-gradient(135deg, #ffffff, #cccc88) !important; /* your brand blue */
+    }
+
+        .chat-header::before {
+            content: "";
+            position: absolute;
+            top: 17px;
+            left: 16px;
+            width: 120px; /* adjust size */
+            height: 120px;
+            background: url('images/smcnewlogo.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        .chat-header p {
+            margin-bottom: 0;
+        }
+    /* Slight padding inside messages so they stand out more */
+    .chat-message {
+        border: 1px solid rgba(0,0,0,0.05) !important;
+        margin: 6px 0 !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        background: linear-gradient(#f3f6fb, #eef2f8) !important;
+    }
+
+    @keyframes popIn {
+        from {
+            transform: translateY(8px) scale(.98);
+            opacity: .0;
+        }
+
+        to {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Header: gradient bar + subtle divider */
+    .chat-header::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(255,255,255,.15), rgba(255,255,255,.06));
+        opacity: .9;
+    }
+
+    .chat-heading {
+        font-weight: 800 !important;
+        letter-spacing: .2px;
+    }
+
+    .chat-subtitle {
+        opacity: .95;
+        font-weight: 500;
+    }
+
+    /* Message list spacing + nice scroll */
+    .chat-messages::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.18);
+        border-radius: 10px;
+        border: 2px solid rgba(255,255,255,0.7);
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.06);
+        border-radius: 10px;
+    }
+
+    /* Bot & user bubbles */
+    .chat-message {
+        border-radius: var(--chat--message--border-radius) !important;
+        font-size: var(--chat--message--font-size) !important;
+        line-height: var(--chat--message-line-height) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+        .chat-message.bot {
+            background: var(--chat--message--bot--background) !important;
+            color: var(--chat--message--bot--color) !important;
+            border: var(--chat--message--bot--border) !important;
+        }
+
+        .chat-message.user {
+            background: var(--chat--message--user--background) !important;
+            color: var(--chat--message--user--color) !important;
+        }
+
+        /* Markdown content refinements */
+        .chat-message pre,
+        .chat-message code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
+            background: var(--chat--message--pre--background) !important;
+            border-radius: 12px !important;
+            padding: 0.35rem 0.55rem !important;
+        }
+
+        .chat-message pre {
+            overflow-x: auto;
+        }
+
+        .chat-message p {
+            margin: 0.35rem 0;
+        }
+
+        .chat-message ul, .chat-message ol {
+            margin: 0.4rem 0 0.4rem 1.1rem;
+        }
+
+        .chat-message a {
+            color: hsl(210, 80%, 38%);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(28, 100, 242, .25);
+        }
+
+            .chat-message a:hover {
+                border-bottom-color: rgba(28, 100, 242, .55);
+            }
+
+    /* Composer (input area) */
+    .chat-composer {
+        background: rgba(255,255,255,0.82) !important;
+        border-top: 1px solid rgba(17, 24, 39, 0.08) !important;
+        padding: 10px !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .chat-textarea {
+        min-height: var(--chat--textarea--height) !important;
+        border-radius: 14px !important;
+        border: 1px solid rgba(17, 24, 39, 0.12) !important;
+        background: rgba(255,255,255,0.95) !important;
+        transition: border-color var(--chat--transition-duration), box-shadow var(--chat--transition-duration);
+    }
+
+        .chat-textarea:focus {
+            border-color: rgba(45, 212, 191, .65) !important;
+            box-shadow: 0 0 0 4px rgba(45, 212, 191, .18) !important;
+            outline: none;
+        }
+
+    /* Primary buttons */
+    .chat-button,
+    .chat-send {
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+        box-shadow: 0 6px 16px rgba(13, 148, 136, 0.25);
+        transition: transform var(--chat--transition-duration), box-shadow var(--chat--transition-duration);
+    }
+
+        .chat-button:hover,
+        .chat-send:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(13, 148, 136, 0.28);
+        }
+
+        .chat-button.active,
+        .chat-send.active {
+            color: #c0392b !important; /* brick red */
+            box-shadow: 0 10px 20px rgba(13, 148, 136, 0.28);
+        }
+
+    /* Typing indicator */
+    .chat-typing {
+        color: var(--chat--color-typing) !important;
+        opacity: .9;
+    }
+
+    /* Mobile: make it a comfy bottom sheet */
+    @media (max-width: 640px) 
+    {
+        :root {
+            --chat--window--width: 100vw;
+            --chat--window--height: calc(100vh - max(10px, env(safe-area-inset-bottom)) - 20px);
+        }
+
+        .chat-window {
+            right: 0 !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            margin: 0 !important;
+            width: 100vw !important;
+            height: 100dvh !important; /* full device height for PWA feel */
+            border-radius: 0 !important;
+            border-left: 0 !important;
+            border-right: 0 !important;
+        }
+
+        .chat-header {
+            padding-top: calc(var(--chat--header--padding) + env(safe-area-inset-top)) !important;
+        }
+
+       .chat-composer {
+    padding-bottom: 10px !important; /* fallback */
+    padding-bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+}
+    }
+
+    /* Medium screens: a tad wider */
+    @media (min-width: 641px) and (max-width: 1024px) 
+    {
+        :root {
+            --chat--window--width: 460px;
+            --chat--window--height: 680px;
+        }
+    }
+</style>
+    
+
+</head>
+<body>
+
+<!-- ── Skip Links ─────────── -->
+<nav class="skip-links" aria-label="नेव्हिगेशन वगळा">
+  <a href="#main-content">मुख्य सामग्रीवर जा</a>
+  <a href="#primary-nav">नेव्हिगेशनवर जा</a>
+  <a href="#a11y-bar">प्रवेशयोग्यता साधनांवर जा</a>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     प्रवेशयोग्यता पट्टी
+══════════════════════════════════════════ -->
+<div id="a11y-bar" role="toolbar" aria-label="GIGW 3.0 प्रवेशयोग्यता नियंत्रणे">
+    <span class="ab-label" aria-hidden="true">अक्षराचा आकार</span>
+<div class="ab-group" role="group" aria-label="अक्षराचा आकार">
+
+  <button class="ab-btn" onclick="changeFont('decrease')" aria-label="Small font" title="अ-">अ-</button>
+
+  <button class="ab-btn on" onclick="changeFont('reset')" aria-label="Normal font" title="अ">अ</button>
+
+  <button class="ab-btn" onclick="changeFont('increase')" aria-label="Large font" title="अ+">अ+</button>
+
+</div>
+  
+  <div class="ab-sep" aria-hidden="true"></div>
+  <span class="ab-label" aria-hidden="true">अंतर</span>
+  <div class="ab-group" role="group" aria-label="ओळीतील अंतर">
+    <button class="ab-btn on" id="ab-sn" onclick="setSpacing('normal')" aria-label="सामान्य अंतर" aria-pressed="true">सामान्य</button>
+    <button class="ab-btn" onclick="setSpacing('wide')" aria-label="विस्तृत अंतर" aria-pressed="false">विस्तृत</button>
+  </div>
+  <div class="ab-sep" aria-hidden="true"></div>
+  <span class="ab-label" aria-hidden="true">थीम</span>
+  <div class="ab-group" role="group" aria-label="रंग थीम">
+    <button id="ab-tlight" class="ab-btn theme-active" onclick="setTheme('light')" aria-label="हलकी थीम" aria-pressed="true">☀ हलकी</button>
+    <button id="ab-tdark" class="ab-btn" onclick="setTheme('dark')" aria-label="गडद थीम" aria-pressed="false">☾ डार्क</button>
+   
+  </div>
+  <div class="ab-sep" aria-hidden="true"></div>
+  <div class="ab-group">
+    <button id="ab-tts" class="ab-btn" onclick="toggleTTS()" aria-label="मोठ्याने वाचा — मजकूर ते आवाज" aria-pressed="false">▶ वाचा</button>
+    <button id="ab-tts-pause" class="ab-btn" onclick="pauseTTS()" aria-label="वाचन थांबवा" style="display:none">⏸ थांबवा</button>
+    <button id="ab-tts-stop" class="ab-btn" onclick="stopTTS()" aria-label="वाचन बंद करा" style="display:none">■ बंद करा</button>
+  </div>
+  <div id="ab-progress" aria-hidden="true"><div id="ab-fill"></div></div>
+  <span class="ab-tts-live" id="ab-live" aria-live="polite" aria-atomic="true"></span>
+</div>
+
+<!-- ══════════════════════════════════════════
+     वरची पट्टी
+══════════════════════════════════════════ -->
+<div class="top-strip" role="complementary" aria-label="सोशल मीडिया आणि संपर्क माहिती">
+  <div class="top-social" role="navigation" aria-label="सोशल मीडिया दुवे">
+    <a href="https://www.facebook.com/solapurcorporation" target="_blank" rel="noopener noreferrer" aria-label="फेसबुक">
+      <i class="fab fa-facebook-f" aria-hidden="true"></i><span class="sr-only">फेसबुक</span>
+    </a>
+    <a href="https://x.com/smcsolapur" target="_blank" rel="noopener noreferrer" aria-label="ट्विटर / X">
+      <i class="fa-solid fa-x" aria-hidden="true"></i><span class="sr-only">ट्विटर / X</span>
+    </a>
+    <a href="https://www.youtube.com/@solapurmunicipalcorporatio4115" target="_blank" rel="noopener noreferrer" aria-label="यूट्यूब">
+      <i class="fab fa-youtube" aria-hidden="true"></i><span class="sr-only">यूट्यूब</span>
+    </a>
+    <a href="https://www.instagram.com/smcsolapur" target="_blank" rel="noopener noreferrer" aria-label="इंस्टाग्राम">
+      <i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">इंस्टाग्राम</span>
+    </a>
+  </div>
+  <div class="top-emergency" role="complementary" aria-label="आपत्कालीन संपर्क">
+    <span><i class="fas fa-phone" aria-hidden="true"></i> ०२१७-२७३५२९३ &nbsp;|&nbsp; १४४२०</span>
+    <span><i class="fab fa-whatsapp" aria-hidden="true"></i> <a href="https://wa.me/919112221901">९११२२२१९०१</a></span>
+  </div>
+  <div class="top-actions">
+    <a href="screen_reader_marathi.aspx" class="ta-btn" aria-label="स्क्रीन रीडर प्रवेश पृष्ठ"><i class="fas fa-assistive-listening-systems" aria-hidden="true"></i> स्क्रीन रीडर</a>
+    <button class="ta-btn" onclick="langChange()" aria-label="इंग्रजी भाषेत स्विच करा">🌐 English</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     मुख्य हेडर
+══════════════════════════════════════════ -->
+<header class="main-header">
+  <div class="mh-inner">
+    <div class="logo-wrap">
+      <a href="home_marathi.aspx" class="logo-img">
+        <img src="images/favicon_smc.png" alt="सोलापूर महानगरपालिका मुख्यपृष्ठ" onerror="this.outerHTML='सोलापूर महानगरपालिका मुख्यपृष्ठ'">
+      </a>
+      <div class="logo-text">
+        <h1 id="site-title">सोलापूर महानगरपालिका</h1>
+        <p>महाराष्ट्र सरकार</p>
+      </div>
+    </div>
+
+    <!-- शोध -->
+    <div style="position:relative;max-width:460px;width:100%" role="search" aria-label="संकेतस्थळ शोध">
+      <div class="hdr-search">
+        <label for="hdr-search-input" class="sr-only">सेवा, निविदा, बातम्या शोधा</label>
+        <input type="search" id="hdr-search-input" placeholder="सेवा, निविदा, बातम्या शोधा…" autocomplete="off" aria-label="शोधा" aria-controls="hdr-search-drop" aria-autocomplete="list" aria-haspopup="listbox">
+        <button id="voice-hdr-btn" onclick="toggleVoice()" aria-label="आवाज शोध — बोला" title="आवाज शोध">
+          <i class="fas fa-microphone" aria-hidden="true"></i>
+        </button>
+        <button onclick="document.getElementById('hdr-search-input').dispatchEvent(new Event('input'))" aria-label="शोधा">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="hdr-search-drop" role="listbox" aria-label="शोध सूचना" aria-live="polite"></div>
+    </div>
+
+    <!-- क्रिया बटणे -->
+    <div class="hdr-actions">
+      <a href="deptlogin.aspx" class="ha-btn" aria-label="स्टाफ लॉगिन"><i class="fas fa-user" aria-hidden="true"></i><span>लॉगिन</span></a>
+      <a href="tender_details_marathi.aspx" class="ha-btn" aria-label="निविदा"><i class="fas fa-file-alt" aria-hidden="true"></i><span>निविदा</span></a>
+      <a href="#" onclick="extLink('https://complaint.solapurcorporation.org')" class="ha-btn" aria-label="तक्रारी"><i class="fas fa-comments" aria-hidden="true"></i><span>तक्रार</span></a>
+      <img src="images/Seal_of_Maharashtra.png" alt="महाराष्ट्र शासनाचा शिक्का" width="68" style="border-radius:50%;flex-shrink:0">
+    </div>
+  </div>
+
+  <!-- ── नेव्हिगेशन ── -->
+  <nav class="nav-bar" aria-label="प्राथमिक नेव्हिगेशन">
+    <div class="nav-inner">
+      <ul class="main-nav" id="primary-nav" role="menubar">
+        <li role="none"><a href="home_marathi.aspx" role="menuitem" aria-current="page"><i class="fas fa-home" aria-hidden="true"></i> मुख्यपृष्ठ</a></li>
+        <li class="has-sub" role="none">
+          <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" id="nav-corp"><i class="fas fa-city" aria-hidden="true"></i> महानगरपालिका</a>
+          <ul class="submenu" aria-labelledby="nav-corp" role="menu">
+            <li role="none"><a href="smc_profile_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-info-circle"></i>आमच्याबद्दल</a></li>
+            <li role="none"><a href="mission_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-bullseye"></i>ध्येय-दृष्टिकोन</a></li>
+            <li role="none"><a href="solapur_city_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-map-marker-alt"></i>सोलापूर शहर</a></li>
+            <li role="none"><a href="history_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-history"></i>इतिहास</a></li>
+            <li role="none"><a href="about_us_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-info-circle"></i>भूमिका-कार्ये</a></li>
+            <li class="has-sub" role="none">
+              <a href="#" role="menuitem" tabindex="-1"><i class="fas fa-sitemap"></i>संघटनात्मक रचना</a>
+              <ul class="submenu" role="menu">
+                <li role="none"><a href="pdf/GazetteSearch.pdf" role="menuitem" tabindex="-1"><i class="fas fa-users"></i>नगरसेवक यादी</a></li>
+                <li role="none"><a href="committee_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-building"></i>समित्या</a></li>
+                <li role="none"><a href="commissinor_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-user-tie"></i>आयुक्त</a></li>
+                <li role="none"><a href="organization_structure_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-users"></i>प्रशासकीय संरचना</a></li>
+                <li role="none"><a href="department_list_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-landmark"></i>विभाग</a></li>
+              </ul>
+            </li>
+            <li role="none"><a href="who_is_who_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-users"></i>कोण काय आहे</a></li>
+            <li role="none"><a href="atglance_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-chart-bar"></i>दृष्टीक्षेपात</a></li>
+            <li role="none"><a href="public_holidays_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-gavel"></i>सार्वजनिक सुट्ट्या</a></li>
+          </ul>
+        </li>
+        <li class="has-sub" role="none">
+          <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" id="nav-admin"><i class="fas fa-list-alt" aria-hidden="true"></i> प्रशासन</a>
+          <ul class="submenu" aria-labelledby="nav-admin" role="menu">
+            <li role="none"><a href="#" onclick="extLink('https://resolution.solapurcorporation.org')" role="menuitem" tabindex="-1"><i class="fas fa-gavel"></i>ठराव</a></li>
+            <li role="none"><a href="budget_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-coins"></i>अर्थसंकल्प</a></li>
+            <li role="none"><a href="audit_reports_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-file-invoice"></i>लेखापरीक्षण अहवाल</a></li>
+            <li role="none"><a href="balance_sheet_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-balance-scale"></i>ताळेबंद</a></li>
+            <li role="none"><a href="city_devlopment_plan_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-heart"></i>शहर विकास आराखडा</a></li>
+            <li role="none"><a href="#" onclick="extLink('https://aadesh.solapurcorporation.org')" role="menuitem" tabindex="-1"><i class="fas fa-file-contract"></i>कार्यालयीन आदेश</a></li>
+            <li role="none"><a href="city_data_policy_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-heart"></i>शहर डाटा धोरण</a></li>
+          </ul>
+        </li>
+        <li class="has-sub" role="none">
+          <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" id="nav-rti"><i class="fas fa-newspaper" aria-hidden="true"></i> माहिती अधिकार</a>
+          <ul class="submenu" aria-labelledby="nav-rti" role="menu">
+            <li role="none"><a href="RTI_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-info-circle"></i>माहिती अधिकार कायदा</a></li>
+            <li role="none"><a href="section4_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-file"></i>कलम ४ माहिती</a></li>
+          </ul>
+        </li>
+        <li class="has-sub" role="none">
+          <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" id="nav-rts"><i class="fas fa-hands-helping" aria-hidden="true"></i> सेवेचा अधिकार</a>
+          <ul class="submenu" aria-labelledby="nav-rts" role="menu">
+            <li role="none"><a href="RTS_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-check-circle"></i>सेवा हमी कायदा</a></li>
+            <li role="none"><a href="citizencharter_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-scroll"></i>नागरिक सनद</a></li>
+            <li role="none"><a href="pdf/rts_appeal_officer_contact_information_marathi.pdf" role="menuitem" tabindex="-1"><i class="fas fa-home"></i>अपिलीय अधिकारी संपर्क क्रमांक</a></li>
+          </ul>
+        </li>
+        <li class="has-sub" role="none">
+          <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" id="nav-citizen"><i class="fas fa-users" aria-hidden="true"></i> नागरिक</a>
+          <ul class="submenu" aria-labelledby="nav-citizen" role="menu">
+            <li role="none"><a href="#" onclick="extLink('https://smctaxcalc.solapurcorporation.org/counter_receipt_online.aspx')" role="menuitem" tabindex="-1"><i class="fas fa-home"></i>मालमत्ता कर</a></li>
+            <li role="none"><a href="#" onclick="extLink('https://complaint.solapurcorporation.org')" role="menuitem" tabindex="-1"><i class="fas fa-comment-dots"></i>तक्रार</a></li>
+            <li role="none"><a href="rts_panel.aspx" role="menuitem" tabindex="-1"><i class="fas fa-laptop"></i>ऑनलाईन सेवा</a></li>
+            <li role="none"><a href="#" onclick="extLink('https://dashboardsmc.solapurcorporation.org')" role="menuitem" tabindex="-1"><i class="fas fa-receipt"></i>सेवा हमी कायदा डॅशबोर्ड</a></li>
+            <li role="none"><a href="#" onclick="extLink('https://smcgis.solapurcorporation.org')" role="menuitem" tabindex="-1"><i class="fas fa-map"></i>जीआयएस डॅशबोर्ड</a></li>
+               <li role="none"><a href="#" onclick="extLink('https://gis-dp.solapurcorporation.org/')" role="menuitem" tabindex="-1"><i class="fas fa-map"></i>विकास योजना डॅशबोर्ड</a></li>
+            <li role="none"><a href="rts_appeal.aspx" role="menuitem" tabindex="-1"><i class="fas fa-history"></i>प्रथम सेवा अपील</a></li>
+            <li role="none"><a href="rts_appeal2.aspx" role="menuitem" tabindex="-1"><i class="fas fa-history"></i>द्वितीय सेवा अपील</a></li>
+            <li role="none"><a href="faq_new.aspx" role="menuitem" tabindex="-1"><i class="fas fa-history"></i>वारंवार विचारले जाणारे प्रश्न</a></li>
+          </ul>
+        </li>
+        <li class="has-sub" role="none">
+          <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" id="nav-pub"><i class="fas fa-download" aria-hidden="true"></i> प्रकाशन</a>
+          <ul class="submenu" aria-labelledby="nav-pub" role="menu">
+            <li role="none"><a href="purvani_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-lightbulb"></i>सर्वसाधारण सभेची विषयसूची</a></li>
+            <li role="none"><a href="event_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-newspaper"></i>ई-न्यूज</a></li>
+            <li role="none"><a href="recruitment_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-briefcase"></i>भरती</a></li>
+            <li role="none"><a href="beneficiary_list_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-lightbulb"></i>लाभार्थी यादी</a></li>
+            <li role="none"><a href="award_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-trophy"></i>उपलब्धी</a></li>
+            <li role="none"><a href="dataset_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-history"></i>शहर डाटासेट</a></li>
+            <li role="none"><a href="dmp_plan_details_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-history"></i>आपत्ती व्य.आराखडा</a></li>
+            <li role="none"><a href="#" onclick="extLink('https://aadesh.solapurcorporation.org/water_reports_display.aspx')" role="menuitem" tabindex="-1"><i class="fas fa-lightbulb"></i>पाणी तपासणी अहवाल</a></li>
+            <li role="none"><a href="#" onclick="extLink('https://smctaxcalc.solapurcorporation.org/due_list.aspx')" role="menuitem" tabindex="-1"><i class="fas fa-lightbulb"></i>टॅक्स डिफॉल्टर्स यादी</a></li>
+
+              
+            <li role="none"><a href="atglance_marathi" role="menuitem" tabindex="-1"><i class="fas fa-receipt"></i>फोटो गॅलरी</a></li>
+            <li role="none"><a href="video_gallery1.aspx" role="menuitem" tabindex="-1"><i class="fas fa-video"></i>व्हिडिओ गॅलरी</a></li>
+            <li role="none"><a href="whatsnew_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-star"></i>नवीन काय आहे</a></li>
+            <li role="none"><a href="#" onclick="extLink('https://aadesh.solapurcorporation.org')" role="menuitem" tabindex="-1"><i class="fas fa-history"></i>महत्त्वाचे कायदे</a></li>
+          </ul>
+        </li>
+        <li class="has-sub" role="none">
+          <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" id="nav-contact"><i class="fas fa-phone-alt" aria-hidden="true"></i> संपर्क</a>
+          <ul class="submenu" aria-labelledby="nav-contact" role="menu">
+            <li role="none"><a href="contact_us_marathi.aspx" role="menuitem" tabindex="-1"><i class="fas fa-address-card"></i>मनपा संपर्क</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="mob-menu-btn" id="mob-btn" aria-label="नेव्हिगेशन मेनू टॉगल करा" aria-expanded="false" aria-controls="primary-nav">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════════
+     हीरो स्लाइडशो
+══════════════════════════════════════════ -->
+
+
+<!-- द्रुत सेवा पट्टी -->
+<div class="services-strip" role="region" aria-label="द्रुत सेवा"></div>
+
+<!-- ══════════════════════════════════════════
+     मुख्य सामग्री
+══════════════════════════════════════════ -->
+<main id="main-content" tabindex="-1">
+ <form method="post" action="./event_marathi" id="ctl00">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C4123C2D">
+                
+
+
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --primary-dark: #ff3838;
+            --secondary-color: #3742fa;
+            --accent-color: #00b894;
+            --text-dark: #2f3542;
+            --text-light: #747d8c;
+            --bg-light: #f8f9fa;
+            --border-color: #e0e0e0;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Page Header - Fixed */
+                .page-header {
+    text-align: center;
+    margin: 30px 0 40px;
+    position: relative;
+}
+
+.page-header h1 {
+    font-size: 3.2rem;
+    color: var(--primary-red);
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.header-subtitle {
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+    max-width: 800px;
+    margin: 0 auto 15px;
+    font-weight: 400;
+}
+
+.page-header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-red), var(--dark-red));
+    margin: 20px auto;
+    border-radius: 2px;
+}
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d32f2f;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .page-tagline {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            background: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: inline-block;
+        }
+
+        /* Filter Section - Fixed */
+        .filter-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stats-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.1) 0%, rgba(55, 66, 250, 0.1) 100%);
+            border-radius: 12px;
+        }
+
+        .stats-icon {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stats-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .stats-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 5px 0 0;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-dropdown {
+            background: white;
+            border: 2px solid #e0e0e0;
+            color: var(--text-dark);
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+            min-width: 180px;
+            transition: var(--transition);
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+            .filter-dropdown:hover,
+            .filter-dropdown:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 5px 15px rgba(255, 71, 87, 0.1);
+            }
+
+        /* News Cards Grid - FIXED POSITION */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+            position: relative; /* Changed from relative to static for no movement */
+        }
+
+        /* News Card - FIXED, NO PARALLAX */
+        .news-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform: translateY(0) !important; /* Ensure no movement */
+            will-change: transform; /* Optimize for transforms */
+        }
+
+            .news-card:hover {
+                transform: translateY(-10px) !important; /* Only on hover */
+                box-shadow: var(--card-shadow-hover);
+            }
+
+        .card-header {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .news-category {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+            .news-date i {
+                color: var(--primary-color);
+            }
+
+        .news-title {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            flex-grow: 1;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .news-title:hover {
+                color: var(--primary-color);
+            }
+
+        .news-department {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background: rgba(55, 66, 250, 0.1);
+            border-radius: 8px;
+        }
+
+            .news-department i {
+                font-size: 1.1rem;
+            }
+
+        .news-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            padding: 20px 25px;
+            background: #f8f9fa;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn1 {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            background: white;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .view-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .pdf-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .share-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* New Badge */
+        .new-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-color), #00a085);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 5px 25px rgba(0, 184, 148, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+            }
+        }
+
+        /* Pagination - Fixed */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .page-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+            .page-btn:hover {
+                background: var(--primary-color);
+                color: white;
+                border-color: var(--primary-color);
+                transform: translateY(-3px);
+            }
+
+            .page-btn.active {
+                background: var(--primary-color);
+                color: white;
+                border-color: var(--primary-color);
+            }
+
+            .page-btn.disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+                .page-btn.disabled:hover {
+                    background: white;
+                    color: var(--text-dark);
+                    border-color: var(--border-color);
+                    transform: none;
+                }
+
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .empty-state h3 {
+            color: var(--text-light);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .empty-state p {
+            color: #aaa;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .refresh-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .refresh-btn:hover {
+                background: var(--primary-dark);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px rgba(255, 71, 87, 0.3);
+            }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 25px;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 25px;
+            }
+
+            .filter-left {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 20px;
+            }
+
+            .stats-card {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .page-header {
+                padding: 30px 0;
+            }
+
+                .page-header h1 {
+                    font-size: 2.2rem;
+                }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card-header {
+                height: 180px;
+            }
+
+            .news-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-tagline {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            .filter-dropdown {
+                min-width: 100%;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+
+            .card-footer {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+            .card-actions {
+                justify-content: center;
+            }
+
+            .action-btn1 {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
+            border: none;
+            font-size: 1.5rem;
+        }
+
+            .scroll-top.visible {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .scroll-top:hover {
+                background: var(--primary-dark);
+                transform: translateY(-5px);
+            }
+
+        /* FIXED: Remove parallax-related styles */
+        .no-parallax {
+            /* This ensures no parallax effect */
+        }
+
+        /* Card entrance animation - only on load */
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card {
+            animation: cardEntrance 0.6s ease forwards;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+            /* Stagger animation delays for cards */
+            .news-card:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .news-card:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .news-card:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .news-card:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+
+            .news-card:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+
+            .news-card:nth-child(6) {
+                animation-delay: 0.6s;
+            }
+
+            .news-card:nth-child(7) {
+                animation-delay: 0.7s;
+            }
+
+            .news-card:nth-child(8) {
+                animation-delay: 0.8s;
+            }
+
+            .news-card:nth-child(9) {
+                animation-delay: 0.9s;
+            }
+
+        /* Info Section - Fixed */
+        .info-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .news-action-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .news-department {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Alternative mobile layout */
+@media (max-width: 768px) {
+    .filter-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .stats-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .stats-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+    
+    .stats-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .filter-dropdowns {
+        flex-direction: column;
+    }
+    
+    .filter-dropdown {
+        width: 100%;
+    }
+}
+
+                /* Small last updated date in top right corner */
+.last-updated-small {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #fdf2f2 0%, #fce4e4 100%);
+    padding: 6px 15px;
+    border-radius: 0 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(189, 55, 58, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 0.85rem;
+    z-index: 1;
+}
+
+    .last-updated-small::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--primary-color);
+    }
+
+.update-icon-small {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    animation: pulse 2s infinite;
+}
+
+.update-label-small {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.update-date-small {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.85rem;
+    background: white;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(189, 55, 58, 0.2);
+}
+/* Mobile-first responsive design */
+    .filter-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    /* Desktop view - horizontal layout */
+    @media (min-width: 768px) {
+        .filter-controls {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        .filter-controls .filter-wrapper {
+            flex: 1;
+        }
+    }
+
+    /* Wrapper for each dropdown */
+    .filter-wrapper {
+        width: 100%;
+    }
+
+    /* Dropdown styling */
+    .filter-dropdown {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px; /* Prevents zoom on iOS */
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+
+    /* Better touch target for mobile */
+    @media (max-width: 767px) {
+        .filter-dropdown {
+            padding: 14px 15px;
+            min-height: 48px; /* Minimum touch target size */
+        }
+    }
+
+    /* Hover and focus states */
+    .filter-dropdown:hover {
+        border-color: #007bff;
+    }
+
+    .filter-dropdown:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+
+    /* Optional: Add labels for better UX on mobile */
+    @media (max-width: 767px) {
+        .filter-wrapper {
+            position: relative;
+        }
+        
+        /* Optional: Add pseudo-labels */
+        .filter-wrapper::before {
+            content: attr(data-label);
+            display: block;
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #666;
+            font-weight: 500;
+        }
+    }
+
+    /* Optional: Style for select arrow on different browsers */
+    .filter-dropdown {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+        padding-right: 40px;
+    }
+
+    /* Remove default arrow in IE */
+    .filter-dropdown::-ms-expand {
+        display: none;
+    }
+    </style>
+            <style>
+    /* Breadcrumb Styles */
+    .breadcrumb-container {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 10px;
+        padding: 15px 25px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(26, 60, 110, 0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .breadcrumb-item {
+        display: flex;
+        align-items: center;
+        font-size: 0.95rem;
+        color: #64748b;
+    }
+
+        .breadcrumb-item a {
+            color: #1a3c6e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+            .breadcrumb-item a:hover {
+                color: #3498db;
+                background: rgba(52, 152, 219, 0.1);
+                transform: translateY(-1px);
+            }
+
+        .breadcrumb-item.active {
+            color: #1e293b;
+            font-weight: 600;
+            background: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(26, 60, 110, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+    .breadcrumb-separator {
+        color: #94a3b8;
+        margin: 0 5px;
+        font-size: 0.8rem;
+    }
+
+    .breadcrumb-home-icon {
+        color: #1a3c6e;
+        font-size: 1.1rem;
+        margin-right: 5px;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .breadcrumb-container {
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-item {
+            font-size: 0.85rem;
+        }
+
+            .breadcrumb-item a {
+                padding: 3px 8px;
+            }
+
+            .breadcrumb-item.active {
+                padding: 3px 10px;
+            }
+    }
+</style>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+    <br>
+    <section class="section1">
+    <div class="container">
+        <!-- Page Header -->
+                        <div class="page-header">
+             <div class="last-updated-small" tabindex="0" aria-label="अंतिम अद्यतनित तारीख">
+     <i class="fas fa-history update-icon-small" aria-hidden="true"></i>
+     <span class="update-label-small">पृष्ठ अंतिम अद्यतन:</span>
+     <span class="update-date-small" id="lastUpdatedDate">
+         <!-- This will be populated by JavaScript -->
+     </span>
+ </div><br><br>
+            
+             <div class="page-title">
+     <i class="fas fa-newspaper"></i>ई-न्यूज
+ </div>
+           
+        </div>
+                                <div class="container1">
+    <div class="breadcrumb-container">
+        <nav aria-label="ब्रेडक्रम्ब">
+            <ol class="breadcrumb" id="dynamicBreadcrumb">
+                <!-- This will be populated dynamically by JavaScript -->
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+
+       
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-left">
+                <div class="stats-card">
+                    <div class="stats-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="stats-info">
+                        <h3>
+                            <span id="ContentPlaceHolder1_lblTotalNews">278</span></h3>
+                        <p>एकूण बातम्या</p>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stats-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stats-info">
+                        <h3>
+                            <span id="ContentPlaceHolder1_lblTodayNews">0</span></h3>
+                        <p>आजच्या बातम्या</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-controls">
+    <div class="filter-wrapper" data-label="फिल्टर करा">
+        <select name="ctl00$ContentPlaceHolder1$ddlFilter" id="ContentPlaceHolder1_ddlFilter" class="filter-dropdown">
+	<option selected="selected" value="all">📰 सर्व बातम्या</option>
+	<option value="important">🔥 महत्त्वाच्या</option>
+	<option value="latest">🆕 नवीनतम</option>
+	<option value="thisweek">📅 या आठवड्यातील</option>
+
+</select>
+    </div>
+
+    <div class="filter-wrapper" data-label="क्रमवारी">
+        <select name="ctl00$ContentPlaceHolder1$ddlSort" id="ContentPlaceHolder1_ddlSort" class="filter-dropdown">
+	<option selected="selected" value="newest">📅 नवीन ते जुने</option>
+	<option value="oldest">📅 जुने ते नवीन</option>
+	<option value="name">🔤 नावानुसार</option>
+
+</select>
+    </div>
+</div>
+        </div>
+
+        <!-- News Cards Grid - FIXED POSITION -->
+        <div class="cards-grid no-parallax">
+            
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        <div id="ContentPlaceHolder1_rptNewsCards_pnlNewBadge_0" class="new-badge">
+	
+                            <i class="fas fa-bolt"></i>नवीन
+                        
+</div>
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_0" class="card-image" src="images/20268284.jpeg" alt="दमशाली समाजाचे कुलदैवत श्री महर्षी मार्कंडेय महामुनी यांच्या नारळी पौर्णिमा उत्सवाला श्री मार्कंडेय मंदिरात भक्तिमय वातावरणात सुरुवात झाली.">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>19 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20268284'">
+                                दमशाली समाजाचे कुलदैवत श्री महर्षी मार्कंडेय महामुनी यांच्या नारळी पौर्णिमा उत्सवाला श्री मार्कंडेय मंदिरात भक्तिमय वातावरणात सुरुवात झाली.       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_0" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl00$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20268284', 'दमशाली समाजाचे कुलदैवत श्री महर्षी मार्कंडेय महामुनी यांच्या नारळी पौर्णिमा उत्सवाला श्री मार्कंडेय मंदिरात भक्तिमय वातावरणात सुरुवात झाली.')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        <div id="ContentPlaceHolder1_rptNewsCards_pnlNewBadge_1" class="new-badge">
+	
+                            <i class="fas fa-bolt"></i>नवीन
+                        
+</div>
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_1" class="card-image" src="images/20260188.jpeg" alt="फोटोतील बदलाची ताकद लोकांच्या स्मरणात राहते">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>19 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20260188'">
+                                फोटोतील बदलाची ताकद लोकांच्या स्मरणात राहते       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_1" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl01$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20260188', 'फोटोतील बदलाची ताकद लोकांच्या स्मरणात राहते')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        <div id="ContentPlaceHolder1_rptNewsCards_pnlNewBadge_2" class="new-badge">
+	
+                            <i class="fas fa-bolt"></i>नवीन
+                        
+</div>
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_2" class="card-image" src="images/20264105.jpeg" alt="बी.ओ.टी.">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>18 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20264105'">
+                                बी.ओ.टी.       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_2" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl02$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20264105', 'बी.ओ.टी.')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        <div id="ContentPlaceHolder1_rptNewsCards_pnlNewBadge_3" class="new-badge">
+	
+                            <i class="fas fa-bolt"></i>नवीन
+                        
+</div>
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_3" class="card-image" src="images/20266873.jpeg" alt="हरितक्रांतीचे प्रणेते व महाराष्ट्र राज्य माजी मुख्यमंत्री  कै. वसंतराव नाईक यांच्या पुण्यतिथी निमित्ता">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>18 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20266873'">
+                                हरितक्रांतीचे प्रणेते व महाराष्ट्र राज्य माजी मुख्यमंत्री  कै. वसंतराव नाईक यांच्या पुण्यतिथी निमित्ता       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_3" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl03$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20266873', 'हरितक्रांतीचे प्रणेते व महाराष्ट्र राज्य माजी मुख्यमंत्री  कै. वसंतराव नाईक यांच्या पुण्यतिथी निमित्ता')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_4" class="card-image" src="images/20260226.jpeg" alt="महाराष्ट्रातील वाढती नागरी लोकसंख्या लक्षात घेता नागरिकांना पाणीपुरवठा">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>17 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20260226'">
+                                महाराष्ट्रातील वाढती नागरी लोकसंख्या लक्षात घेता नागरिकांना पाणीपुरवठा       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_4" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl04$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20260226', 'महाराष्ट्रातील वाढती नागरी लोकसंख्या लक्षात घेता नागरिकांना पाणीपुरवठा')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_5" class="card-image" src="images/20260424.jpeg" alt="चिमटेश्वर जयंतीनिमित्त सुनील नगर येथील चिमटेश्वर प्रतिष्ठानच्या वतीने">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>17 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20260424'">
+                                चिमटेश्वर जयंतीनिमित्त सुनील नगर येथील चिमटेश्वर प्रतिष्ठानच्या वतीने       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_5" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl05$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20260424', 'चिमटेश्वर जयंतीनिमित्त सुनील नगर येथील चिमटेश्वर प्रतिष्ठानच्या वतीने')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_6" class="card-image" src="images/20267440.jpeg" alt="भारताचे माजी पंतप्रधान, कै.अटल बिहारी वाजपेयी यांच्या पुण्यतिथीनिमित्त">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>16 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20267440'">
+                                भारताचे माजी पंतप्रधान, कै.अटल बिहारी वाजपेयी यांच्या पुण्यतिथीनिमित्त       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_6" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl06$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20267440', 'भारताचे माजी पंतप्रधान, कै.अटल बिहारी वाजपेयी यांच्या पुण्यतिथीनिमित्त')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_7" class="card-image" src="images/20264134.jpeg" alt="भव्य राष्ट्रोत्सवाला सोलापूरचे महापौर श्री. विनायक कोंड्याल यांनी सदिच्छा भेट देत उपस्थितांना स्वातंत्र्यदिनाच्या शुभेच्छा दिल्या.">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>15 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20264134'">
+                                भव्य राष्ट्रोत्सवाला सोलापूरचे महापौर श्री. विनायक कोंड्याल यांनी सदिच्छा भेट देत उपस्थितांना स्वातंत्र्यदिनाच्या शुभेच्छा दिल्या.       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_7" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl07$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20264134', 'भव्य राष्ट्रोत्सवाला सोलापूरचे महापौर श्री. विनायक कोंड्याल यांनी सदिच्छा भेट देत उपस्थितांना स्वातंत्र्यदिनाच्या शुभेच्छा दिल्या.')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="news-card" style="position: relative; transform: none;">
+                        <!-- New Badge for recent news -->
+                        
+
+                        <!-- Card Header with Image -->
+                        <div class="card-header">
+                            <img id="ContentPlaceHolder1_rptNewsCards_imgNews_8" class="card-image" src="images/20268215.jpeg" alt="रश्मी हंचाटे वसतिगृह व रश्मी हंचाटे प्रशालेच्या नवीन इमारतीचे उद्घाटन समारंभ उत्साहात पार पडला.">
+                           
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+
+                            <div class="news-date">
+                                <div class="news-department">
+                                    <i class="fas fa-building"></i>
+                                    <span> </span>
+                                    |
+                                <span style="margin-left: auto;">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>15 August, 2026</span>
+                                    
+                                </span>
+                                </div>
+                            </div>
+                            <h3 class="news-title" onclick="location.href='news_new.aspx?code=20268215'">
+                                रश्मी हंचाटे वसतिगृह व रश्मी हंचाटे प्रशालेच्या नवीन इमारतीचे उद्घाटन समारंभ उत्साहात पार पडला.       
+                            </h3>
+
+                            <div class="news-action-row">
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <a id="ContentPlaceHolder1_rptNewsCards_btnView_8" title="संपूर्ण बातमी वाचा" class="action-btn1 view-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptNewsCards$ctl08$btnView','')">
+                               <i class="fas fa-eye"></i>
+                            </a>
+
+                             <button class="action-btn1 share-btn" onclick="shareNews('20268215', 'रश्मी हंचाटे वसतिगृह व रश्मी हंचाटे प्रशालेच्या नवीन इमारतीचे उद्घाटन समारंभ उत्साहात पार पडला.')" title="शेअर करा">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                            
+                        </div>
+                    </div>
+                
+
+            <!-- Empty State -->
+            
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <div class="pagination">
+                <a id="ContentPlaceHolder1_btnFirst" class="aspNetDisabled page-btn">
+                        <i class="fas fa-angle-double-left"></i>
+                </a>
+
+                <a id="ContentPlaceHolder1_btnPrev" class="aspNetDisabled page-btn">
+                        <i class="fas fa-angle-left"></i>
+                </a>
+
+                
+                        <a id="ContentPlaceHolder1_rptPagination_btnPage_0" class="page-btn active" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptPagination$ctl00$btnPage','')">1</a>
+                    
+                        <a id="ContentPlaceHolder1_rptPagination_btnPage_1" class="page-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptPagination$ctl01$btnPage','')">2</a>
+                    
+                        <a id="ContentPlaceHolder1_rptPagination_btnPage_2" class="page-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptPagination$ctl02$btnPage','')">3</a>
+                    
+
+                <a id="ContentPlaceHolder1_btnNext" class="page-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$btnNext','')">
+                        <i class="fas fa-angle-right"></i>
+                </a>
+
+                <a id="ContentPlaceHolder1_btnLast" class="page-btn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$btnLast','')">
+                        <i class="fas fa-angle-double-right"></i>
+                </a>
+            </div>
+
+            <div class="page-info">
+                <span style="color: var(--text-light);">पृष्ठ
+                    <span id="ContentPlaceHolder1_lblCurrentPage">1</span>
+                    /
+                        <span id="ContentPlaceHolder1_lblTotalPages">31</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        
+    </div>
+    
+                        <!-- Back Button Section -->
+<div class="back-navigation-container">
+    <div class="back-button-wrapper">
+        <button type="button" class="back-button-modern" onclick="smartGoBack()">
+            <span class="back-icon">←</span>
+            <span class="back-text">मागील पृष्ठावर परत जा</span>
+        </button>
+      
+    </div>
+</div>
+
+<style type="text/css">
+    .back-navigation-container {
+        margin: 25px 0;
+        padding: 15px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 10px;
+        border-left: 4px solid #007bff;
+    }
+
+    .back-button-wrapper {
+        text-align: center;
+    }
+
+    .back-button-modern {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        transition: all 0.3s ease;
+        margin-bottom: 8px;
+    }
+
+    .back-button-modern:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+        background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    }
+
+    .back-button-modern:active {
+        transform: translateY(0);
+    }
+
+    .back-icon {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .back-text {
+        font-family: 'Segoe UI', 'Nirmala UI', sans-serif;
+    }
+
+    .back-note {
+        color: #6c757d;
+        display: block;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+        .back-button-modern {
+            padding: 10px 20px;
+            font-size: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+</section>
+<script type="text/javascript">
+    function smartGoBack() {
+        // Check if there's history to go back to
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            // If no history, redirect to home or show message
+            alert('मागे जाण्यासाठी कोणतेही इतिहास उपलब्ध नाही. मुखपृष्ठावर पाठवत आहे...');
+            window.location.href = 'home_marathi.aspx';
+        }
+    }
+
+    // Alternative: Direct back function
+    function goBack() {
+        window.history.back();
+        return false;
+    }
+</script>
+   
+
+    <script>
+        // Dynamic Breadcrumb Functionality
+        function generateBreadcrumb() {
+            const breadcrumb = document.getElementById('dynamicBreadcrumb');
+            const currentPage = " ई-न्यूज";
+            const currentUrl = window.location.pathname;
+
+            const breadcrumbHierarchy = [
+                {
+                    name: '<i class="fas fa-home breadcrumb-home-icon"></i> मुख्यपृष्ठ',
+                    url: '/smc/home_marathi.aspx',
+                    isActive: false
+                },
+                {
+                    name: 'प्रकाशन',
+                    url: '#',
+                    isActive: false
+                },
+                {
+                    name: currentPage,
+                    url: currentUrl,
+                    isActive: true
+                }
+            ];
+
+            breadcrumb.innerHTML = '';
+
+            breadcrumbHierarchy.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'breadcrumb-item';
+
+                if (item.isActive) {
+                    li.classList.add('active');
+                    li.setAttribute('aria-current', 'page');
+                    li.innerHTML = `<span>${item.name}</span>`;
+                } else {
+                    li.innerHTML = `<a href="${item.url}">${item.name}</a>`;
+                }
+
+                breadcrumb.appendChild(li);
+
+                if (index < breadcrumbHierarchy.length - 1) {
+                    const separator = document.createElement('span');
+                    separator.className = 'breadcrumb-separator';
+                    separator.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                    separator.setAttribute('aria-hidden', 'true');
+                    breadcrumb.appendChild(separator);
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            generateBreadcrumb();
+            window.addEventListener('popstate', generateBreadcrumb);
+        });
+
+        // Set the last updated date to 19 December 2025 in Marathi
+        setLastUpdatedDate();
+        function setLastUpdatedDate() {
+            const lastUpdatedDate = "१९ जानेवारी २०२६";
+            document.getElementById('lastUpdatedDate').textContent = lastUpdatedDate;
+        }
+
+    </script>
+
+    <!-- JavaScript - NO PARALLAX EFFECT -->
+    <script>
+        // Hide loading when page loads
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').style.display = 'none';
+                document.body.style.opacity = '1';
+            }, 500);
+
+            // Initialize animations
+            initializeCardAnimations();
+        });
+
+        // Card hover effects - NO SCROLL MOVEMENT
+        function initializeCardAnimations() {
+            const cards = document.querySelectorAll('.news-card');
+
+            cards.forEach((card, index) => {
+                // Add hover effect only
+                card.addEventListener('mouseenter', function () {
+                    this.style.zIndex = '10';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.zIndex = '1';
+                });
+
+                // Make card focusable for accessibility
+                card.setAttribute('tabindex', '0');
+
+                // Click animation
+                card.addEventListener('click', function (e) {
+                    if (!e.target.closest('.action-btn1') && !e.target.closest('.share-btn')) {
+                        this.style.transform = 'translateY(-10px) scale(1.02)';
+                        setTimeout(() => {
+                            this.style.transform = 'translateY(-10px)';
+                        }, 150);
+                    }
+                });
+
+                // Keyboard support
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        const viewBtn = this.querySelector('.view-btn');
+                        if (viewBtn) viewBtn.click();
+                    }
+                });
+            });
+
+            // Scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+
+                // NO PARALLAX EFFECT - Cards stay fixed
+                // Removed all scroll-based card movement
+            });
+
+            // Share news function
+            window.shareNews = function (newsCode, title) {
+                if (navigator.share) {
+                    navigator.share({
+                        title: title,
+                        text: 'ही बातमी वाचा: ' + title,
+                        url: window.location.origin + '/news_new.aspx?code=' + newsCode
+                    })
+                        .then(() => console.log('शेअर यशस्वी'))
+                        .catch(error => console.log('शेअर करताना त्रुटी:', error));
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    const shareUrl = window.location.origin + '/news_new.aspx?code=' + newsCode;
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        alert('लिंक क्लिपबोर्डवर कॉपी केली गेली आहे!');
+                    });
+                }
+            };
+
+            // Scroll to top function
+            window.scrollToTop = function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+
+            // Image lazy loading
+            const images = document.querySelectorAll('.card-image');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+
+            images.forEach(img => {
+                if (img.dataset.src) {
+                    imageObserver.observe(img);
+                }
+            });
+
+            // Ripple effect for buttons
+            const buttons = document.querySelectorAll('.action-btn1, .page-btn, .refresh-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // Remove existing ripples
+                    const existingRipples = this.querySelectorAll('.ripple');
+                    existingRipples.forEach(ripple => ripple.remove());
+
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.5);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        pointer-events: none;
+                        z-index: 1;
+                    `;
+
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Add CSS for ripple
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+                
+                /* Ensure cards don't move on scroll */
+                .news-card {
+                    position: relative !important;
+                    transform: none !important;
+                }
+                
+                .cards-grid {
+                    position: relative;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Loading animation for filter changes
+            const filterControls = document.querySelectorAll('.filter-dropdown');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+
+            filterControls.forEach(control => {
+                control.addEventListener('change', function () {
+                    loadingOverlay.style.display = 'flex';
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                    }, 1000);
+                });
+            });
+
+            // Keyboard navigation for cards
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const cards = Array.from(document.querySelectorAll('.news-card'));
+                    const currentCard = document.activeElement;
+
+                    if (cards.length > 0 && cards.includes(currentCard)) {
+                        let currentIndex = cards.indexOf(currentCard);
+
+                        if (e.key === 'ArrowDown') {
+                            currentIndex = currentIndex < cards.length - 1 ? currentIndex + 1 : 0;
+                        } else {
+                            currentIndex = currentIndex > 0 ? currentIndex - 1 : cards.length - 1;
+                        }
+
+                        cards[currentIndex].focus();
+                        cards[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else if (cards.length > 0) {
+                        // Focus first card if none is focused
+                        cards[0].focus();
+                    }
+                }
+            });
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', initializeCardAnimations);
+    </script>
+
+
+</form>
+  <!-- सेवा -->
+  
+  <br><br>
+
+
+
+  
+    <br><br>
+  
+
+  <section class="card" aria-label="सरकारी भागीदार संकेतस्थळे">
+    <div class="scroller-section">
+      <h2 class="exc-title" id="websites-heading">🔗 इतर सरकारी संकेतस्थळे</h2>
+      <div class="scroller-wrapper" role="region" aria-labelledby="websites-heading" aria-roledescription="कार्यपटल" tabindex="0">
+        <div class="sr-only" id="carousel-status" aria-live="polite" aria-atomic="true"></div>
+        <button class="scroll-btn prev-btn" aria-label="मागील संकेतस्थळे" aria-controls="website-list">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span class="sr-only">मागील संकेतस्थळे</span>
+        </button>
+        <div class="scroller-container-wrapper">
+          <ul class="scroller-container" id="website-list" aria-label="संबंधित सरकारी संकेतस्थळांची यादी">
+            <li class="website-item"><a href="#" class="logo-link" data-url="mygovin" aria-label="मायजीओव्ही इंडिया"><img src="images/mygov.png" alt="मायजीओव्ही इंडिया लोगो" class="logo-img1"><span class="website-name">मायजीओव्ही इंडिया</span></a></li>
+            <li class="website-item"><a href="#" class="logo-link" data-url="indiagovin" aria-label="भारताचे राष्ट्रीय संकेतस्थळ"><img src="images/india-gov.png" alt="भारताचे राष्ट्रीय संकेतस्थळ लोगो" class="logo-img1"><span class="website-name">नॅशनल पोर्टल</span></a></li>
+            <li class="website-item"><a href="#" class="logo-link" data-url="datagovin" aria-label="ओपन गव्हर्नमेंट डाटा"><img src="images/data-gov.png" alt="ओपन गव्हर्नमेंट डाटा लोगो" class="logo-img1"><span class="website-name">ओपन गव्हर्नमेंट डाटा</span></a></li>
+            <li class="website-item"><a href="#" class="logo-link" data-url="aaplesarkar" aria-label="आपले सरकार – महाराष्ट्र शासन सेवा"><img src="images/aaple-sarkar.png" alt="आपले सरकार लोगो" class="logo-img1"><span class="website-name">आपले सरकार</span></a></li>
+            <li class="website-item"><a href="#" class="logo-link" data-url="mahagovin" aria-label="महाराष्ट्र शासन अधिकृत संकेतस्थळ"><img src="images/maharashtra_govt.jpg" alt="महाराष्ट्र शासन लोगो" class="logo-img1"><span class="website-name">महाराष्ट्र शासन</span></a></li>
+            <li class="website-item"><a href="#" class="logo-link" data-url="digitalindia" aria-label="डिजिटल इंडिया – परिवर्तनात्मक उपक्रम"><img src="images/digital-india.png" alt="डिजिटल इंडिया लोगो" class="logo-img1"><span class="website-name">डिजिटल इंडिया</span></a></li>
+            <li class="website-item"><a href="#" class="logo-link" data-url="urban" aria-label="नगर विकास विभाग, महाराष्ट्र"><img src="images/udd.jpeg" alt="अर्बन डेव्हलपमेंट लोगो" class="logo-img1"><span class="website-name">अर्बन डेव्हलपमेंट</span></a></li>
+          </ul>
+        </div>
+        <button class="scroll-btn next-btn" aria-label="पुढील संकेतस्थळे" aria-controls="website-list">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <span class="sr-only">पुढील संकेतस्थळे</span>
+        </button>
+        <div class="auto-scroll-controls" role="group" aria-label="स्वयं-स्क्रॉल नियंत्रणे">
+          <button class="control-btn pause-btn" aria-label="स्वयं-स्क्रॉल थांबवा" title="स्वयं-स्क्रॉल थांबवा"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg><span class="sr-only">स्वयं-स्क्रॉल थांबवा</span></button>
+          <button class="control-btn play-btn hidden" aria-label="स्वयं-स्क्रॉल सुरू करा" title="स्वयं-स्क्रॉल सुरू करा"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span class="sr-only">स्वयं-स्क्रॉल सुरू करा</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════════════════════════════════════
+     फूटर
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+    
+      <div>
+        <h3 class="fc-heading">सेवा</h3>
+        <ul class="fc-links">
+          <li><a href="tender_details_marathi.aspx"><i class="fas fa-chevron-right"></i>निविदा</a></li>
+          <li><a href="#" onclick="extLink('https://mahatenders.gov.in/nicgep/app')"><i class="fas fa-chevron-right"></i>ई-निविदा</a></li>
+          <li><a href="recruitment_marathi.aspx"><i class="fas fa-chevron-right"></i>भरती</a></li>
+          <li><a href="#" onclick="extLink('https://complaint.solapurcorporation.org')"><i class="fas fa-chevron-right"></i>तक्रार</a></li>
+          <li><a href="sitemap_marathi.aspx"><i class="fas fa-chevron-right"></i>साइटमॅप</a></li>
+          <li><a href="#" onclick="extLink('https://dashboardsmc.solapurcorporation.org')"><i class="fas fa-chevron-right"></i>सेवा हमी कायदा डॅशबोर्ड</a></li>
+          <li><a href="#" onclick="extLink('https://smcgis.solapurcorporation.org')"><i class="fas fa-chevron-right"></i>जीआयएस डॅशबोर्ड</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="fc-heading">जलद दुवे</h3>
+        <ul class="fc-links">
+          <li><a href="feedback_form.aspx"><i class="fas fa-chevron-right"></i>तुमचा अभिप्राय नोंदवा</a></li>
+          <li><a href="website_policies_marathi.aspx"><i class="fas fa-chevron-right"></i>वेबसाइट पॉलिसी</a></li>
+          <li><a href="termscondition_marathi.aspx"><i class="fas fa-chevron-right"></i>शर्ती आणि अटी</a></li>
+          <li><a href="contact_us_marathi.aspx"><i class="fas fa-chevron-right"></i>आमच्याशी संपर्क</a></li>
+            <li><a href="help_marathi.aspx"><i class="fas fa-chevron-right"></i>मदत</a></li>
+          <li><a href="events.aspx"><i class="fas fa-chevron-right"></i>ई-न्यूज</a></li>
+          <li><a href="../pdf/FAQ_V1.pdf"><i class="fas fa-chevron-right"></i>वारंवार विचारले जाणारे प्रश्न</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="fc-heading">क्यूआर कोड</h3>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div style="text-align:center"><p style="font-size:.72rem;color:rgba(255,255,255,.5);margin-bottom:6px">एसएमसी ॲप</p><img src="images/smcapp_qr.jpeg" alt="एसएमसी मोबाइल ॲपसाठी क्यूआर कोड" width="75" style="border-radius:8px;border:2px solid rgba(255,255,255,.15)" onerror="this.style.display='none'"></div>
+          <div style="text-align:center"><p style="font-size:.72rem;color:rgba(255,255,255,.5);margin-bottom:6px">व्हॉट्सअॅप</p><img src="images/whatsapp_qr.jpeg" alt="व्हॉट्सअॅप चॅटबॉटसाठी क्यूआर कोड" width="75" style="border-radius:8px;border:2px solid rgba(255,255,255,.15)" onerror="this.style.display='none'"></div>
+        </div>
+      </div>
+
+              <div>
+                  <a href="deptlogin.aspx" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="images/web-Main-SMC-Logo-PNG.png" alt="SMC लोगो" width="70" style="border-radius:50%;margin-bottom:14px" onerror="this.style.display='none'">
+        <h2 class="fc-heading" style="font-size:1.05rem">सोलापूर महानगरपालिका</h2></a>
+                                    <p style="font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.7">
+  <span class="date-label" id="currentDate">
+    संकेतस्थळ अद्यतन: २९-११-२०२५
+  </span>
+</p>
+      
+          <!-- Visitor Counter Script -->
+<script src="https://www.freevisitorcounters.com/auth.php?id=c42d1bc4bb8f6f25a734b8f40cc9e6a151e41eac"></script>
+
+<script src="https://www.freevisitorcounters.com/en/home/counter/1393101/t/0"></script>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>कॉपीराइट©२०२५- सर्व हक्क राखीव - सोलापूर महानगरपालिका यांची अधिकृत वेबसाईट , महाराष्ट्र सरकार ,भारत . <br>
+   टीप : या वेबसाईटवरील माहिती सोलापूर महानगरपालिकेद्वारे प्रकाशित आणि व्यवस्थापित केली जाते.<br>या वेबसाइटबद्दल कोणत्याही प्रश्नांसाठी ,कृपया वेब माहिती व्यवस्थापकाशी संपर्क साधा.<br> <strong style="color:rgba(255,255,255,.7)">बिरुदेव सरवदे  </strong>,सिस्टम सपोर्ट इंजिनियर — smcwebsite.feedback@gmail.com — +९१-९०११९६२६२७<br>सपोर्ट करते: गुगल क्रोम १२५+ &nbsp;|&nbsp; मोझिला फायरफॉक्स १२६+ &nbsp;|&nbsp; मायक्रोसॉफ्ट एज १२५+ &nbsp;|&nbsp; अ‍ॅपल सफारी १७+</p>
+      <div class="ft-social" role="navigation" aria-label="सोशल मीडिया दुवे">
+           <span><i class="fas fa-clock"></i>सोम-शुक्र: सकाळी ९:४५ - संध्याकाळी ६:१५</span>
+       
+      </div>
+    </div>
+  </div>
+</footer>
+
+   
+     <!-- The widget renders itself; we just provide a target -->
+ <div id="n8n-chat"></div>
+
+ <script type="module">
+     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+     createChat({
+         webhookUrl: 'https://gss1.gyanshakti.net/webhook/e57dd3c8-12b9-4bce-b613-6d12977a6b90/chat',
+         webhookConfig: {
+             method: 'POST',
+             headers: {}
+         },
+         target: '#n8n-chat',
+         mode: 'window',
+         chatInputKey: 'chatInput',
+         chatSessionKey: 'sessionId',
+         loadPreviousSession: true,
+         metadata: {},
+         showWelcomeScreen: false,
+         defaultLanguage: 'en',
+         initialMessages: [
+             'Hi there! 👋',
+             "How can I assist you today?"
+         ],
+         i18n: {
+             en: {
+                 title: 'सोलापूर महानगरपालिकेत आपले स्वागत आहे',
+                 subtitle: "Start a chat. We're here to help you 24/7.",
+                 footer: '',
+                 getStarted: 'New Conversation',
+                 inputPlaceholder: 'Type your question…',
+             },
+         },
+         enableStreaming: false,
+     });
+ </script>
+
+<button id="scroll-top" aria-label="पृष्ठाच्या वर जा" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up" aria-hidden="true"></i></button>
+<div id="toast" role="status" aria-live="assertive" aria-atomic="true"></div>
+
+<script>
+    'use strict';
+    function toast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2800); }
+    function extLink(url) { if (confirm('आपण सोलापूर महानगरपालिका संकेतस्थळावरून बाह्य संकेतस्थळावर जात आहात.\n\nपुढे जायचे का?')) window.open(url, '_blank', 'noopener,noreferrer'); return false; }
+    function langChange() {
+        alert('Current pathname: ' + window.location.pathname + '\nCurrent href: ' + window.location.href);
+    }
+
+    function langChange() {
+
+        const pageMap = {
+            'home_marathi': 'home_version2',
+            'smc_profile_marathi': 'smc_profile_english',
+            'mission_marathi': 'mission_english',
+            'solapur_city_marathi': 'solapur_city_english',
+            'history_marathi': 'history_english',
+            'about_us_marathi': 'about_us',
+            'committee_marathi': 'committee_english',
+            'commissinor_marathi': 'commissinor_english',
+            'organization_structure_marathi': 'organization_structure_english',
+            'department_list_marathi': 'department_list_english',
+            'who_is_who_marathi': 'who_is_who_english',
+            'atglance_marathi': 'atglance',
+            'public_holidays_marathi': 'public_holidays_english',
+            'budget_marathi': 'budget_english',
+            'audit_reports_marathi': 'audit_reports',
+            'balance_sheet_marathi': 'balance_sheet_english',
+            'city_devlopment_plan_marathi': 'city_development_plan_english',
+            'city_data_policy_marathi': 'city_data_policy_english',
+            'rit_marathi': 'RTI_english',
+            'rti_marathi': 'RTI_english',
+            'section4_marathi': 'section4_english',
+            'rts_marathi': 'RTS_english',
+            'citizencharter_marathi': 'citizencharter_english',
+            'rts_panel': 'rts_panel_english',
+            'rts_appeal': 'rts_appeal_english',
+            'rts_appeal2': 'rts_appeal2_english',
+            'faq_new': 'faq_new_english',
+            'recruitment_marathi': 'recruitment_english',
+            'beneficiary_list_marathi': 'beneficiary_list_english',
+            'dataset_marathi': 'dataset_english',
+            'election_details_marathi': 'election_details_english',
+            'contact_us_marathi': 'contact_us_english',
+            'website_policies_marathi': 'website_policies_english',
+            'termscondition_marathi': 'termscondition_english',
+            'sitemap_marathi': 'sitemap_english',
+            'whatsnew_marathi': 'whatsnew_english',
+            'feedback_form': 'feedback_form_english',
+            'screen_reader_marathi': 'screen_reader_english',
+            'dmp_plan_details': 'dmp_plan_details',
+            'atglance': 'atglance',
+            'event_marathi': 'events',
+            'award_marathi': 'awards',
+            'tender_details_marathi': 'tender_details',
+            'video_gallery1_marathi': 'video_gallery1',
+            'smc_hospital': 'smc_hospital',
+            'garden_marathi': 'garden',
+            'Schools_marathi': 'Schools',
+            'water_reservoirs_marathi': 'water_reservoirs_english',
+            'water_sources_marathi': 'water_sources_english',
+            'water_treatment_plant_marathi': 'water_treatment_plant',
+            'sewage_treatment_plant_marathi': 'sewage_treatment_plant',
+            'vehicle_marathi': 'vehicle_english',
+            'traffic_signal_marathi': 'traffic_signal_english',
+            'shopping_center_marathi': 'shopping_center_english',
+            'markets_marathi': 'markets_english',
+            'ghantagadi_trasfer_station_marathi': 'ghantagadi_transfer_station_english',
+            'swimming_pool_marathi': 'swimming_pool_english',
+            'gymkhana_marathi': 'gymkhana_english',
+            'stadium_marathi': 'stadium_english',
+            'electric_furnance_marathi': 'electric_furnance_english',
+            'zoo_marathi': 'zoo_english',
+            'statue_marathi': 'statue',
+            'firebrigade_marathi': 'firebrigade_english',
+            'dmp_plan_details_marathi': 'dmp_plan_details',
+            'light_dept_marathi': 'light_dept_english',
+            'Health_dept_marathi': 'Health_dept_english',
+            'malaria_marathi': 'malaria_english',
+            'drainage_marathi': 'drainage_english',
+            'solid_waste_mgmt_marathi': 'solid_waste_mgmt_english',
+            'fire_marathi': 'fire_english',
+            'ucd_marathi': 'ucd_english',
+            'transport_dept_marathi': 'transport_dept_english',
+            'gad_new': 'GAD_englsih',
+            'chief_audit_marathi': 'chief_audit_english',
+            'internal_audit_marathi': 'internal_audit_english',
+            'vidhan_sallagar_marathi': 'vidhan_sallagar_english',
+            'abhilekhapal_marathi': 'abhilekhapal_english',
+            'property_tax_marathi': 'property_tax_english',
+            'land_estate_marathi': 'land_estate_english',
+            'market_dept_marathi': 'market_dept_english',
+            'town_planning_marathi': 'town_planning_english',
+            'building_permission_marathi': 'building_permission_english',
+            'city_eng_dept_marathi': 'city_eng_dept_english',
+            'computer_dept_marathi': 'computer_dept_english',
+            'vehicle_marathi': 'vehicle_english',
+            'worker_welfare_marathi': 'worker_welfare_english',
+            'mahilabalkalyan_marathi': 'mahilabalkalyan_english',
+            'sports_dept_marathi': 'sports_dept_english',
+            'garden_dept_marathi': 'garden_dept_english',
+            'zoo_dept_marathi': 'zoo_dept_english',
+            'veternary_marathi': 'veternary_english',
+            'zone1_marathi': 'zone1_english',
+            'zone2_marathi': 'zone2_english',
+            'zone3_marathi': 'zone3_english',
+            'zone4_marathi': 'zone4_english',
+            'zone5_marathi': 'zone5_english',
+            'zone6_marathi': 'zone6_english',
+            'zone7_marathi': 'zone7_english',
+            'zone8_marathi': 'zone8_english',
+            'election_marathi': 'election_english',
+            'census_dept_marathi': 'census_dept_english',
+            'birth_death_marathi': 'birth_death_english',
+            'marraige_dept_marathi': 'marraige_dept_english',
+            'licensing_marathi': 'licensing_english',
+            'contact_us_marathi': 'contact_us_english',
+            'Commissioner_Office_marathi': 'Commissioner_Office_english',
+            'department_contact_marathi.aspx': 'department_contact_english',
+            'divisional_office_marathi.aspx': 'divisional_office_english'
+
+
+
+        };
+
+        if (!confirm('आपण संकेतस्थळ इंग्रजी (English) भाषेत बदलू इच्छिता?')) return;
+
+        // Step 1: get the filename only — most reliable method
+        var path = window.location.pathname;           // e.g. /smc/budget_marathi.aspx
+        var filename = path.split('/').pop();           // e.g. budget_marathi.aspx
+        var nameOnly = filename.replace(/\.aspx$/i, ''); // e.g. budget_marathi
+        var lowerName = nameOnly.toLowerCase();
+
+        // Step 2: lookup in map (case-insensitive)
+        var englishPage = null;
+        for (var key in pageMap) {
+            if (key.toLowerCase() === lowerName) {
+                englishPage = pageMap[key];
+                break;
+            }
+        }
+
+        // Step 3: fallback
+        if (!englishPage) {
+            englishPage = 'home_version2';
+        }
+
+        // Step 4: build new URL — replace ONLY the filename, keep everything else
+        var newUrl = window.location.href.replace(filename, englishPage + '.aspx');
+        window.location.href = newUrl;
+    }
+
+
+
+    var path = window.location.pathname;
+    var filename = path.split('/').pop();
+    var nameOnly = filename.replace(/\.aspx$/i, '');
+    console.log('filename:', filename);
+    console.log('nameOnly:', nameOnly);
+
+
+
+    // ── Font size ──────────────────────────────────
+    let currentFontScale = 1;
+
+    function changeFont(action) {
+        const step = 0.1;
+        if (action === 'increase') currentFontScale += step;
+        else if (action === 'decrease') currentFontScale -= step;
+        else currentFontScale = 1;        // reset
+        currentFontScale = Math.max(0.7, Math.min(currentFontScale, 1.8));
+        document.documentElement.style.setProperty('--fs-scale', currentFontScale);
+        localStorage.setItem('smc_font', currentFontScale);
+        toast('Font size: ' + Math.round(currentFontScale * 100) + '%');
+    }
+
+    // ── Line spacing ────────────────────────────────
+    const spacingMap = { normal: 1, wide: 1.15 };
+    const spacingBtnIds = { normal: 'ab-sn', wide: 'ab-sw' };
+
+    function setSpacing(mode, silent) {
+        document.documentElement.style.setProperty('--lh-scale', spacingMap[mode] || 1);
+        Object.keys(spacingBtnIds).forEach(key => {
+            const btn = document.getElementById(spacingBtnIds[key]);
+            if (!btn) return;
+            const active = (key === mode);
+            btn.classList.toggle('on', active);
+            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        if (!silent) {
+            toast('ओळीतील अंतर: ' + mode);
+            localStorage.setItem('smc_spacing', mode);
+        }
+    }
+
+    // ── Theme ───────────────────────────────────────
+    function setTheme(themeName, silent) {
+        document.documentElement.setAttribute('data-theme', themeName);
+        const btnMap = { light: 'ab-tlight', dark: 'ab-tdark' };
+        // clear all states first
+        ['ab-tlight', 'ab-tdark'].forEach(id => {
+            const b = document.getElementById(id);
+            if (!b) return;
+            b.classList.remove('theme-active', 'on');
+            b.setAttribute('aria-pressed', 'false');
+        });
+        // apply active state to chosen theme button
+        const activeId = btnMap[themeName];
+        if (activeId) {
+            const activeBtn = document.getElementById(activeId);
+            if (activeBtn) {
+                activeBtn.classList.add(themeName === 'light' ? 'theme-active' : 'on');
+                activeBtn.setAttribute('aria-pressed', 'true');
+            }
+        }
+        if (!silent) {
+            toast('थीम बदलली: ' + themeName);
+            localStorage.setItem('smc_theme', themeName);
+        }
+    }
+
+    // ── Init: restore saved preferences ────────────
+    (function init() {
+        const savedTheme = localStorage.getItem('smc_theme') || 'light';
+        const savedFont = parseFloat(localStorage.getItem('smc_font')) || 1;
+        const savedSpacing = localStorage.getItem('smc_spacing') || 'normal';
+
+        setTheme(savedTheme, true);
+
+        // restore font scale directly (no setFont dependency)
+        currentFontScale = savedFont;
+        document.documentElement.style.setProperty('--fs-scale', currentFontScale);
+
+        setSpacing(savedSpacing, true);
+    })();
+
+    const synth = window.speechSynthesis;
+    let ttsOn = false, ttsPaused = false, ttsQueue = [], ttsQueueIdx = 0, ttsCurrentEl = null;
+
+    // Pick the best available Marathi or fallback voice
+    function getMarathiVoice() {
+        const voices = synth.getVoices();
+        // 1. Prefer exact mr-IN
+        let v = voices.find(v => v.lang === 'mr-IN');
+        if (v) return v;
+        // 2. Any Marathi variant
+        v = voices.find(v => v.lang.startsWith('mr'));
+        if (v) return v;
+        // 3. Hindi as close script fallback
+        v = voices.find(v => v.lang === 'hi-IN');
+        if (v) return v;
+        // 4. Any Indian English
+        v = voices.find(v => v.lang === 'en-IN');
+        if (v) return v;
+        // 5. Default (let browser decide)
+        return null;
+    }
+
+    // Collect unique readable elements, avoiding duplication
+    function getAllTTSText() {
+        const seen = new Set();
+        const items = [];
+        // Targeted selectors only — ordered by page flow
+        const nodes = document.querySelectorAll([
+            '.ab-group',
+            /*'.top-social',*/
+            '.top-strip',
+            '.main-header',
+            '.ticker-wrap',
+            '.page',
+            '.section1',
+            '.scroller-section',
+            '.section-title',
+            '.section-sub',
+            '.dc-title',
+            '.dc-desc',
+            '.info-banner h2',
+            '.info-banner p',
+            '[data-tts]',
+            '.footer-inner'
+
+
+        ].join(','));
+        nodes.forEach(el => {
+            if (seen.has(el)) return;
+            // Skip invisible elements
+            if (!el.offsetParent && el.tagName !== 'BODY') return;
+            const text = (el.innerText || el.textContent || '').trim().replace(/\s+/g, ' ');
+            if (text.length > 3) { seen.add(el); items.push({ el, text }); }
+        });
+        return items;
+    }
+
+    function speakNext() {
+        if (ttsQueueIdx >= ttsQueue.length) { stopTTS(); return; }
+        if (ttsCurrentEl) ttsCurrentEl.classList.remove('reading');
+        const { el, text } = ttsQueue[ttsQueueIdx];
+        ttsCurrentEl = el;
+        el.classList.add('reading');
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const total = ttsQueue.length;
+        const live = document.getElementById('ab-live');
+        if (live) live.textContent = `वाचत आहे ${ttsQueueIdx + 1} पैकी ${total}…`;
+        const fill = document.getElementById('ab-fill');
+        if (fill) fill.style.width = Math.round((ttsQueueIdx / total) * 100) + '%';
+        const utt = new SpeechSynthesisUtterance(text);
+        const voice = getMarathiVoice();
+        if (voice) {
+            utt.voice = voice;
+            utt.lang = voice.lang;
+        } else {
+            utt.lang = 'mr-IN'; // try anyway
+        }
+        utt.rate = 0.88;
+        utt.pitch = 1;
+        utt.volume = 1;
+        utt.onend = () => {
+            if (ttsCurrentEl) ttsCurrentEl.classList.remove('reading');
+            ttsQueueIdx++;
+            if (ttsOn) speakNext();
+        };
+        utt.onerror = (e) => {
+            console.warn('TTS error:', e.error, 'on text:', text.substring(0, 40));
+            if (ttsCurrentEl) ttsCurrentEl.classList.remove('reading');
+            ttsQueueIdx++;
+            if (ttsOn) speakNext();
+        };
+        synth.speak(utt);
+    }
+
+    function toggleTTS() {
+        ttsOn = !ttsOn;
+        const btn = document.getElementById('ab-tts');
+        const pause = document.getElementById('ab-tts-pause');
+        const stop = document.getElementById('ab-tts-stop');
+        const bar = document.getElementById('ab-progress');
+        const live = document.getElementById('ab-live');
+        if (ttsOn) {
+            document.body.classList.add('tts-mode');
+            if (btn) { btn.textContent = '🔊 वाचत आहे…'; btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true'); }
+            if (pause) pause.style.display = '';
+            if (stop) stop.style.display = '';
+            if (bar) bar.style.display = '';
+            // Wait for voices to load if needed, then start
+            function startReading() {
+                ttsQueue = getAllTTSText();
+                ttsQueueIdx = 0;
+                ttsCurrentEl = null;
+                synth.cancel();
+                if (!ttsQueue.length) { toast('वाचण्यासारखी सामग्री सापडली नाही'); stopTTS(); return; }
+                if (live) live.textContent = 'सुरू करत आहे…';
+                toast('पृष्ठ मोठ्याने वाचत आहे — ' + ttsQueue.length + ' विभाग');
+                speakNext();
+            }
+            if (synth.getVoices().length === 0) {
+                // Voices not loaded yet — wait for the event
+                synth.addEventListener('voiceschanged', startReading, { once: true });
+                // Also set a timeout fallback in case voiceschanged never fires
+                setTimeout(() => { if (ttsOn && ttsQueue.length === 0) startReading(); }, 1200);
+            } else {
+                startReading();
+            }
+        } else {
+            stopTTS();
+        }
+    }
+
+    function pauseTTS() {
+        if (!synth) return;
+        const pauseBtn = document.getElementById('ab-tts-pause');
+        if (!ttsPaused) {
+            synth.pause(); ttsPaused = true;
+            if (pauseBtn) pauseBtn.textContent = '▶ सुरू करा';
+        } else {
+            synth.resume(); ttsPaused = false;
+            if (pauseBtn) pauseBtn.textContent = '⏸ थांबवा';
+        }
+    }
+
+    function stopTTS() {
+        ttsOn = false; ttsPaused = false;
+        if (synth) synth.cancel();
+        document.body.classList.remove('tts-mode');
+        if (ttsCurrentEl) { ttsCurrentEl.classList.remove('reading'); ttsCurrentEl = null; }
+        ttsQueue = []; ttsQueueIdx = 0;
+        const btn = document.getElementById('ab-tts');
+        const pause = document.getElementById('ab-tts-pause');
+        const stop = document.getElementById('ab-tts-stop');
+        const fill = document.getElementById('ab-fill');
+        const bar = document.getElementById('ab-progress');
+        const live = document.getElementById('ab-live');
+        if (btn) { btn.textContent = '▶ मोठ्याने वाचा'; btn.classList.remove('on'); btn.setAttribute('aria-pressed', 'false'); }
+        if (pause) { pause.style.display = 'none'; pause.textContent = '⏸ थांबवा'; }
+        if (stop) stop.style.display = 'none';
+        if (bar) bar.style.display = 'none';
+        if (fill) fill.style.width = '0%';
+        if (live) live.textContent = '';
+    }
+
+    // Click-to-read a specific element
+    document.addEventListener('click', function (e) {
+        if (!ttsOn) return;
+        const el = e.target.closest('[data-tts], .dc-title, .dc-desc, .section-title, .section-sub, .slide-text h2, .slide-text p');
+        if (!el) return;
+        const idx = ttsQueue.findIndex(item => item.el === el);
+        if (idx >= 0) { synth.cancel(); ttsQueueIdx = idx; speakNext(); }
+    });
+    // ── Global Search with Toast Results ──────────────────────────────────────
+    const searchData = [
+        { title: 'मालमत्ता कर भरणा', tag: 'नागरिक', icon: '🏠', url: 'https://smctaxcalc.solapurcorporation.org' },
+        { title: 'तक्रारी संकेतस्थळ', tag: 'तक्रार', icon: '💬', url: 'https://complaint.solapurcorporation.org' },
+        { title: 'निविदा', tag: 'खरेदी', icon: '📋', url: 'tender_details_marathi.aspx' },
+        { title: 'भरती', tag: 'रोजगार', icon: '💼', url: 'recruitment_marathi.aspx' },
+        { title: 'जीआयएस डॅशबोर्ड', tag: 'तंत्रज्ञान', icon: '🗺️', url: 'https://smcgis.solapurcorporation.org' },
+        { title: 'माहितीचा अधिकार (आरटीआय)', tag: 'पारदर्शकता', icon: '📜', url: 'RTI_marathi.aspx' },
+        { title: 'अंदाजपत्रक अहवाल', tag: 'वित्त', icon: '💰', url: 'budget_marathi.aspx' },
+        { title: 'नागरिक अधिकारपत्र', tag: 'सेवा', icon: '📄', url: 'citizencharter_marathi.aspx' },
+        { title: 'ई-बातम्या आणि कार्यक्रम', tag: 'प्रकाशने', icon: '📰', url: 'events.aspx' },
+        { title: 'सेवा डॅशबोर्ड', tag: 'डॅशबोर्ड', icon: '📊', url: 'https://dashboardsmc.solapurcorporation.org' },
+        { title: 'लेखापरीक्षण अहवाल', tag: 'वित्त', icon: '🔍', url: 'audit_reports.aspx' },
+        { title: 'व्हिडिओ गॅलरी', tag: 'मीडिया', icon: '🎬', url: 'video_gallery1.aspx' },
+        { title: 'संपर्क करा', tag: 'माहिती', icon: '📞', url: 'contact_us_marathi.aspx' },
+        { title: 'ऑनलाइन सेवा', tag: 'नागरिक', icon: '💻', url: 'rts_panel_marathi.aspx' },
+        { title: 'आमच्याबद्दल', tag: 'महानगरपालिका', icon: '🏛️', url: 'smc_profile_marathi.aspx' },
+    ];
+
+    const sinput = document.getElementById('hdr-search-input');
+    const sdrop = document.getElementById('hdr-search-drop');
+
+    // ── Toast Search Panel ─────────────────────────────────────────────────────
+    // Inject once into DOM
+    (function injectSearchToast() {
+        if (document.getElementById('search-toast')) return;
+        const el = document.createElement('div');
+        el.id = 'search-toast';
+        el.setAttribute('role', 'dialog');
+        el.setAttribute('aria-modal', 'true');
+        el.setAttribute('aria-label', 'शोध निकाल');
+        el.innerHTML = `
+        <div id="st-header">
+            <span id="st-title">शोध निकाल</span>
+            <button id="st-close" aria-label="शोध बंद करा">✕</button>
+        </div>
+        <div id="st-body"></div>`;
+        document.body.appendChild(el);
+
+        // Inject styles
+        const style = document.createElement('style');
+        style.textContent = `
+        #search-toast {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 360px;
+            max-height: 480px;
+            background: var(--surface, #fff);
+            border: 1px solid var(--border, rgba(0,32,74,.1));
+            border-left: 4px solid var(--saffron, #FF6B1A);
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0,32,74,.18);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(30px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform .28s cubic-bezier(.4,0,.2,1), opacity .28s;
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+        }
+        #search-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #st-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px 10px;
+            background: var(--header-grad, linear-gradient(135deg,#00204A,#1A5F7A));
+            border-radius: 10px 10px 0 0;
+            flex-shrink: 0;
+        }
+        #st-title {
+            color: #fff;
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+        }
+        #st-close {
+            background: rgba(255,255,255,.15);
+            border: none;
+            color: #fff;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: .8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s;
+        }
+        #st-close:hover { background: rgba(255,255,255,.3); }
+        #st-body {
+            overflow-y: auto;
+            flex: 1;
+            padding: 8px 0;
+            scrollbar-width: thin;
+        }
+        #st-body::-webkit-scrollbar { width: 5px; }
+        #st-body::-webkit-scrollbar-thumb { background: var(--border, #ccc); border-radius: 10px; }
+        .st-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border, rgba(0,32,74,.07));
+            transition: background .15s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .st-item:last-child { border-bottom: none; }
+        .st-item:hover, .st-item:focus {
+            background: var(--saffron-lt, #FFF0E6);
+            outline: none;
+        }
+        .st-icon {
+            font-size: 1.2rem;
+            width: 32px;
+            height: 32px;
+            background: var(--bg3, #EBF0F8);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .st-info { flex: 1; min-width: 0; }
+        .st-name {
+            font-size: .84rem;
+            font-weight: 600;
+            color: var(--text, #0D1B2A);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .st-tag {
+            font-size: .68rem;
+            color: var(--text3, #7A8FA6);
+            margin-top: 2px;
+        }
+        .st-arrow {
+            color: var(--text3, #7A8FA6);
+            font-size: .75rem;
+            flex-shrink: 0;
+        }
+        .st-empty {
+            padding: 24px 16px;
+            text-align: center;
+            color: var(--text3, #7A8FA6);
+            font-size: .85rem;
+        }
+        @media (max-width: 480px) {
+            #search-toast {
+                right: 12px;
+                left: 12px;
+                width: auto;
+                bottom: 70px;
+            }
+        }
+    `;
+        document.head.appendChild(style);
+
+        document.getElementById('st-close').addEventListener('click', closeSearchToast);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeSearchToast();
+        });
+        document.addEventListener('mousedown', function (e) {
+            const toast = document.getElementById('search-toast');
+            if (toast && toast.classList.contains('show') &&
+                !toast.contains(e.target) &&
+                !e.target.closest('[role=search]')) {
+                closeSearchToast();
+            }
+        });
+    }());
+
+    function openSearchToast(hits, query) {
+        const toast = document.getElementById('search-toast');
+        const body = document.getElementById('st-body');
+        const title = document.getElementById('st-title');
+        if (!toast || !body) return;
+
+        title.textContent = hits.length
+            ? `"${query}" — ${hits.length} निकाल`
+            : `"${query}" — कोणतेही निकाल नाहीत`;
+
+        body.innerHTML = '';
+
+        if (!hits.length) {
+            const d = document.createElement('div');
+            d.className = 'st-empty';
+            d.textContent = `"${query}" साठी कोणतेही परिणाम सापडले नाहीत.`;
+            body.appendChild(d);
+        } else {
+            hits.forEach(function (item, i) {
+                const a = document.createElement('a');
+                a.className = 'st-item';
+                a.tabIndex = 0;
+                a.setAttribute('role', 'option');
+                a.setAttribute('id', 'sti-' + i);
+                a.href = item.url.startsWith('http') ? '#' : item.url;
+                a.innerHTML = `
+                <div class="st-icon">${item.icon}</div>
+                <div class="st-info">
+                    <div class="st-name">${item.title}</div>
+                    <div class="st-tag">${item.tag}</div>
+                </div>
+                <span class="st-arrow">→</span>`;
+
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    closeSearchToast();
+                    if (sinput) sinput.value = '';
+                    if (item.url.startsWith('http')) {
+                        extLink(item.url);
+                    } else {
+                        window.location.href = item.url;
+                    }
+                });
+
+                a.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') { a.click(); }
+                    if (e.key === 'ArrowDown') {
+                        const next = document.getElementById('sti-' + (i + 1));
+                        if (next) next.focus();
+                    }
+                    if (e.key === 'ArrowUp') {
+                        if (i === 0 && sinput) sinput.focus();
+                        else {
+                            const prev = document.getElementById('sti-' + (i - 1));
+                            if (prev) prev.focus();
+                        }
+                    }
+                });
+
+                body.appendChild(a);
+            });
+        }
+
+        toast.classList.add('show');
+    }
+
+    function closeSearchToast() {
+        const toast = document.getElementById('search-toast');
+        if (toast) toast.classList.remove('show');
+    }
+
+    // ── Wire up input ──────────────────────────────────────────────────────────
+    if (sinput) {
+        // hide the old dropdown always
+        if (sdrop) sdrop.style.display = 'none';
+
+        sinput.addEventListener('input', function () {
+            const q = sinput.value.trim();
+            if (!q) { closeSearchToast(); return; }
+            const hits = searchData.filter(function (d) {
+                return d.title.toLowerCase().indexOf(q.toLowerCase()) >= 0
+                    || d.tag.toLowerCase().indexOf(q.toLowerCase()) >= 0;
+            });
+            openSearchToast(hits, q);
+        });
+
+        sinput.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowDown') {
+                const first = document.getElementById('sti-0');
+                if (first) { e.preventDefault(); first.focus(); }
+            }
+            if (e.key === 'Escape') closeSearchToast();
+            if (e.key === 'Enter') {
+                const q = sinput.value.trim();
+                if (!q) return;
+                const hits = searchData.filter(function (d) {
+                    return d.title.toLowerCase().indexOf(q.toLowerCase()) >= 0
+                        || d.tag.toLowerCase().indexOf(q.toLowerCase()) >= 0;
+                });
+                openSearchToast(hits, q);
+            }
+        });
+    }
+
+    // also wire up the search icon button
+    const searchIconBtn = sinput && sinput.closest('[role=search]')
+        ? sinput.closest('[role=search]').querySelector('button:last-of-type')
+        : null;
+    if (searchIconBtn) {
+        searchIconBtn.addEventListener('click', function () {
+            const q = sinput ? sinput.value.trim() : '';
+            if (!q) return;
+            const hits = searchData.filter(function (d) {
+                return d.title.toLowerCase().indexOf(q.toLowerCase()) >= 0
+                    || d.tag.toLowerCase().indexOf(q.toLowerCase()) >= 0;
+            });
+            openSearchToast(hits, q);
+        });
+    }    if (sinput) { sinput.addEventListener('input', function () { renderSearch(sinput.value); }); sinput.addEventListener('keydown', function (ev) { if (ev.key === 'ArrowDown') { var f = sdrop.querySelector('[role=option]'); if (f) f.focus(); } if (ev.key === 'Escape') { sdrop.classList.remove('open'); sinput.setAttribute('aria-expanded', 'false'); } }); }
+    document.addEventListener('mousedown', function (ev) { if (sinput && !ev.target.closest('[role=search]')) { sdrop.classList.remove('open'); sinput.setAttribute('aria-expanded', 'false'); } });
+    var voiceActive = false, recognizer = null;
+    function toggleVoice() { var btn = document.getElementById('voice-hdr-btn'); if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) { toast('आवाज शोधासाठी क्रोम किंवा एज ब्राउझर आवश्यक आहे.'); return; } if (voiceActive) { if (recognizer) recognizer.stop(); return; } var SR = window.SpeechRecognition || window.webkitSpeechRecognition; recognizer = new SR(); recognizer.lang = 'mr-IN'; recognizer.interimResults = false; recognizer.maxAlternatives = 1; recognizer.onstart = function () { voiceActive = true; if (btn) { btn.classList.add('listening'); btn.setAttribute('aria-label', 'ऐकत आहे… थांबण्यासाठी क्लिक करा'); } toast('ऐकत आहे — आपला शोध बोला 🎙'); }; recognizer.onresult = function (ev) { var t = ev.results[0][0].transcript; if (sinput) sinput.value = t; renderSearch(t); toast('ऐकले: "' + t + '"'); }; recognizer.onerror = function (ev) { toast('आवाज त्रुटी: ' + ev.error); }; recognizer.onend = function () { voiceActive = false; if (btn) { btn.classList.remove('listening'); btn.setAttribute('aria-label', 'आवाज शोध — बोलण्यासाठी क्लिक करा'); } }; recognizer.start(); }
+    var slideIdx = 0, slides = document.querySelectorAll('.slide'), dots = document.querySelectorAll('.dot'), slideTimer;
+    function goSlide(n) { if (!slides.length) return; slides[slideIdx].classList.remove('active'); slides[slideIdx].setAttribute('aria-hidden', 'true'); dots[slideIdx].classList.remove('active'); dots[slideIdx].setAttribute('aria-selected', 'false'); slideIdx = ((n % slides.length) + slides.length) % slides.length; slides[slideIdx].classList.add('active'); slides[slideIdx].setAttribute('aria-hidden', 'false'); dots[slideIdx].classList.add('active'); dots[slideIdx].setAttribute('aria-selected', 'true'); clearInterval(slideTimer); slideTimer = setInterval(function () { goSlide(slideIdx + 1); }, 5000); }
+    function changeSlide(d) { goSlide(slideIdx + d); }
+    slideTimer = setInterval(function () { goSlide(slideIdx + 1); }, 5000);
+    var heroEl = document.querySelector('.hero'); if (heroEl) { heroEl.addEventListener('mouseenter', function () { clearInterval(slideTimer); }); heroEl.addEventListener('mouseleave', function () { slideTimer = setInterval(function () { goSlide(slideIdx + 1); }, 5000); }); }
+    var stb = document.getElementById('scroll-top'); window.addEventListener('scroll', function () { if (stb) stb.classList.toggle('show', window.scrollY > 320); });
+    var mobBtn = document.getElementById('mob-btn'), primNav = document.getElementById('primary-nav');
+    if (mobBtn && primNav) { mobBtn.addEventListener('click', function () { var open = primNav.classList.toggle('open'); mobBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); mobBtn.innerHTML = open ? '<i class="fas fa-times" aria-hidden="true"></i>' : '<i class="fas fa-bars" aria-hidden="true"></i>'; }); }
+    document.querySelectorAll('.has-sub>a').forEach(function (a) { a.addEventListener('click', function (ev) { if (window.innerWidth > 768) return; ev.preventDefault(); var sub = a.nextElementSibling; if (sub) sub.classList.toggle('mob-open'); var expanded = a.getAttribute('aria-expanded') === 'true'; a.setAttribute('aria-expanded', expanded ? 'false' : 'true'); }); });
+    document.addEventListener('click', function (ev) { if (window.innerWidth <= 768 && primNav && mobBtn && !ev.target.closest('.nav-bar')) { primNav.classList.remove('open'); mobBtn.setAttribute('aria-expanded', 'false'); mobBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>'; } });
+    document.querySelectorAll('.dash-grid').forEach(function (grid) { grid.addEventListener('keydown', function (ev) { var cards = Array.from(grid.querySelectorAll('.dash-card')); var idx = cards.indexOf(document.activeElement); if (idx < 0) return; if (ev.key === 'ArrowRight' && idx < cards.length - 1) { ev.preventDefault(); cards[idx + 1].focus(); } if (ev.key === 'ArrowLeft' && idx > 0) { ev.preventDefault(); cards[idx - 1].focus(); } }); });
+    (function init() { var t = localStorage.getItem('smc_theme') || 'light'; var f = localStorage.getItem('smc_font') || 'normal'; var s = localStorage.getItem('smc_spacing') || 'normal'; setTheme(t, true); setFont(f, true); setSpacing(s, true); })();    (function () { var excNames = ['सोलापूर किल्ला', 'सिद्धेश्वर मंदिर', 'हिप्परगा तलाव']; var allSlides = document.querySelectorAll('.exc-slide'); var excSlides = Array.from(allSlides); var excIdx = 0, excPlaying = true, excTimer; function excShow(n) { if (!excSlides.length) return; excSlides[excIdx].classList.remove('active'); excIdx = ((n % excSlides.length) + excSlides.length) % excSlides.length; excSlides[excIdx].classList.add('active'); var nameSpan = document.getElementById('exc-pname'); if (nameSpan && excNames[excIdx]) { nameSpan.textContent = excNames[excIdx]; } else if (nameSpan) { nameSpan.textContent = "खूण एक्सप्लोर करा"; } } function excStart() { if (excTimer) clearInterval(excTimer); excTimer = setInterval(function () { excShow(excIdx + 1); }, 3800); } function excStop() { if (excTimer) clearInterval(excTimer); excTimer = null; } window.excNav = function (d) { if (!excSlides.length) return; excStop(); excShow(excIdx + d); if (excPlaying) excStart(); }; window.excToggle = function () { excPlaying = !excPlaying; var btn = document.getElementById('exc-play-btn'); if (btn) { btn.innerHTML = excPlaying ? '&#9654;' : '&#9646;&#9646;'; btn.setAttribute('aria-label', excPlaying ? 'स्लाइडशो थांबवा' : 'स्लाइडशो सुरू करा'); } excPlaying ? excStart() : excStop(); }; if (excSlides.length) { excStart(); } })();
+    (function () { if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initCarousel); } else { initCarousel(); } function initCarousel() { const scrollerList = document.querySelector('.scroller-container'); const prevBtn = document.querySelector('.prev-btn'); const nextBtn = document.querySelector('.next-btn'); const pauseCtrl = document.querySelector('.pause-btn'); const playCtrl = document.querySelector('.play-btn'); const wrapperDiv = document.querySelector('.scroller-wrapper'); const containerWrapper = document.querySelector('.scroller-container-wrapper'); const statusSpan = document.getElementById('carousel-status'); if (!scrollerList || !prevBtn || !nextBtn) return; const items = Array.from(document.querySelectorAll('.website-item')); const totalItems = items.length; if (totalItems === 0) return; const ITEM_FIXED_WIDTH = 200; const GAP_SIZE = 30; const ITEM_TOTAL_WIDTH = ITEM_FIXED_WIDTH + GAP_SIZE; let visibleItemsCount = 0; let currentIdx = 0; let autoTimer = null; let isAutoPlaying = true; const AUTO_INTERVAL_MS = 2800; let resizeDebounce = null; let hoverPauseOverride = false; function announce(message) { if (statusSpan) { statusSpan.textContent = message; setTimeout(() => { if (statusSpan.textContent === message) statusSpan.textContent = ''; }, 4000); } } function updateVisibleItems() { if (!containerWrapper) return 1; const containerWidth = containerWrapper.clientWidth; let possible = Math.floor(containerWidth / ITEM_TOTAL_WIDTH); visibleItemsCount = Math.max(1, Math.min(possible, totalItems)); return visibleItemsCount; } function updateButtonsAndAnnounce() { const maxStartIndex = Math.max(0, totalItems - visibleItemsCount); if (currentIdx <= 0) { prevBtn.classList.add('disabled'); prevBtn.setAttribute('aria-disabled', 'true'); } else { prevBtn.classList.remove('disabled'); prevBtn.removeAttribute('aria-disabled'); } if (currentIdx >= maxStartIndex) { nextBtn.classList.add('disabled'); nextBtn.setAttribute('aria-disabled', 'true'); } else { nextBtn.classList.remove('disabled'); nextBtn.removeAttribute('aria-disabled'); } const startItem = currentIdx + 1; const endItem = Math.min(currentIdx + visibleItemsCount, totalItems); announce(`दर्शवित आहे ${startItem} ते ${endItem} पैकी ${totalItems} सरकारी संकेतस्थळे.`); } function applyScrollTransform() { const translateXVal = -currentIdx * ITEM_TOTAL_WIDTH; scrollerList.style.transform = `translateX(${translateXVal}px)`; updateButtonsAndAnnounce(); } function goToIndex(newIndex) { const maxStart = Math.max(0, totalItems - visibleItemsCount); let clamped = Math.min(maxStart, Math.max(0, newIndex)); if (clamped !== currentIdx) { currentIdx = clamped; applyScrollTransform(); } else if (newIndex < 0) { currentIdx = maxStart; applyScrollTransform(); } else if (newIndex > maxStart && maxStart >= 0) { currentIdx = maxStart; applyScrollTransform(); } else { applyScrollTransform(); } } function nextSlide() { const maxIndex = Math.max(0, totalItems - visibleItemsCount); if (currentIdx < maxIndex) { goToIndex(currentIdx + 1); } else { goToIndex(0); } } function prevSlide() { if (currentIdx > 0) { goToIndex(currentIdx - 1); } else { const maxIndex = Math.max(0, totalItems - visibleItemsCount); goToIndex(maxIndex); } } function startAutoScroll() { if (autoTimer) clearInterval(autoTimer); if (isAutoPlaying && !hoverPauseOverride) { autoTimer = setInterval(() => { nextSlide(); }, AUTO_INTERVAL_MS); } } function stopAutoScroll() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } } function pauseAutoScroll() { if (!isAutoPlaying) return; isAutoPlaying = false; stopAutoScroll(); if (pauseCtrl && playCtrl) { pauseCtrl.classList.add('hidden'); playCtrl.classList.remove('hidden'); } announce('स्वयं-स्क्रॉल थांबविले.'); } function resumeAutoScroll() { if (isAutoPlaying) return; isAutoPlaying = true; stopAutoScroll(); startAutoScroll(); if (pauseCtrl && playCtrl) { pauseCtrl.classList.remove('hidden'); playCtrl.classList.add('hidden'); } announce('स्वयं-स्क्रॉल पुन्हा सुरू.'); } function handleMouseEnter() { if (isAutoPlaying && autoTimer) { stopAutoScroll(); hoverPauseOverride = true; } } function handleMouseLeave() { if (hoverPauseOverride && isAutoPlaying) { startAutoScroll(); hoverPauseOverride = false; } else if (hoverPauseOverride && !isAutoPlaying) { hoverPauseOverride = false; } } const urlsMap = { mygovin: 'https://www.mygov.in', indiagovin: 'https://www.india.gov.in', datagovin: 'https://data.gov.in', aaplesarkar: 'https://aaplesarkar.maharashtra.gov.in', mahagovin: 'https://maharashtra.gov.in', digitalindia: 'https://digitalindia.gov.in', urban: 'https://udd.maharashtra.gov.in' }; function openOfficialWebsite(urlKey) { const targetUrl = urlsMap[urlKey]; if (targetUrl) { announce(`${targetUrl} उघडत आहे`); window.open(targetUrl, '_blank', 'noopener,noreferrer'); } else { announce(`संकेतस्थळ दुवा लवकरच अद्यतनित केला जाईल.`); } } const allLinks = document.querySelectorAll('.logo-link'); allLinks.forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); const urlType = link.getAttribute('data-url'); if (urlType) { openOfficialWebsite(urlType); } else { announce('सध्या संसाधन उपलब्ध नाही.'); } }); }); function recalcAndFix() { updateVisibleItems(); const maxAllowed = Math.max(0, totalItems - visibleItemsCount); if (currentIdx > maxAllowed) currentIdx = maxAllowed; if (currentIdx < 0) currentIdx = 0; applyScrollTransform(); if (isAutoPlaying && !hoverPauseOverride) { stopAutoScroll(); startAutoScroll(); } } window.addEventListener('resize', () => { if (resizeDebounce) clearTimeout(resizeDebounce); resizeDebounce = setTimeout(() => { recalcAndFix(); }, 160); }); nextBtn.addEventListener('click', (e) => { e.preventDefault(); nextSlide(); if (isAutoPlaying && !hoverPauseOverride) { stopAutoScroll(); startAutoScroll(); } }); prevBtn.addEventListener('click', (e) => { e.preventDefault(); prevSlide(); if (isAutoPlaying && !hoverPauseOverride) { stopAutoScroll(); startAutoScroll(); } }); if (pauseCtrl && playCtrl) { pauseCtrl.addEventListener('click', () => { if (isAutoPlaying) pauseAutoScroll(); else resumeAutoScroll(); }); playCtrl.addEventListener('click', () => { if (isAutoPlaying) pauseAutoScroll(); else resumeAutoScroll(); }); } if (wrapperDiv) { wrapperDiv.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); if (isAutoPlaying && !hoverPauseOverride) { stopAutoScroll(); startAutoScroll(); } } else if (e.key === 'ArrowRight') { e.preventDefault(); nextSlide(); if (isAutoPlaying && !hoverPauseOverride) { stopAutoScroll(); startAutoScroll(); } } }); wrapperDiv.addEventListener('mouseenter', handleMouseEnter); wrapperDiv.addEventListener('mouseleave', handleMouseLeave); } const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)'); if (motionMedia.matches) { isAutoPlaying = false; if (pauseCtrl && playCtrl) { pauseCtrl.classList.add('hidden'); playCtrl.classList.remove('hidden'); } announce('कमी हालचाल प्राधान्यामुळे स्वयं-स्क्रॉल अक्षम केले.'); stopAutoScroll(); } else { updateVisibleItems(); currentIdx = 0; applyScrollTransform(); startAutoScroll(); } document.addEventListener('visibilitychange', () => { if (document.hidden) { if (autoTimer) stopAutoScroll(); } else { if (isAutoPlaying && !hoverPauseOverride && !motionMedia.matches) { startAutoScroll(); } } }); setTimeout(() => { announce(`कार्यपटल तयार. ${totalItems} सरकारी संसाधने. नेव्हिगेट करण्यासाठी बाण बटणे वापरा.`); }, 700); } })();
+
+</script>
+    
+     <script>
+         // Convert numbers to Marathi numerals
+         function toMarathiNumerals(number) {
+             const marathiDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+             return String(number).replace(/\d/g, digit => marathiDigits[parseInt(digit)]);
+         }
+
+         // Function to format the date as DD-MM-YYYY in Marathi numerals
+         function formatDateMarathi(date) {
+             const day = toMarathiNumerals(date.getDate());
+             const month = toMarathiNumerals(date.getMonth() + 1);
+             const year = toMarathiNumerals(date.getFullYear());
+
+             return `${day}-${month}-${year}`;
+         }
+
+         // Update the date label with current date in Marathi format
+         function updateDateLabel() {
+             const now = new Date();
+             const formattedDate = formatDateMarathi(now);
+
+             document.getElementById('currentDate').textContent =
+                 `वेबसाईट शेवटचे अपडेट - ${formattedDate}`;
+         }
+
+         // Initialize the date when the page loads
+         document.addEventListener('DOMContentLoaded', updateDateLabel);
+     </script>
+
+
+
+</body></html>

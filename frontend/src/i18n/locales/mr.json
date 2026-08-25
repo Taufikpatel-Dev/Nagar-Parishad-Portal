@@ -1,0 +1,24 @@
+{
+  "header": {
+    "skipToContent": "मुख्य आशयावर जा",
+    "fontSize": "अक्षर आकार",
+    "letterSpacing": "अक्षर अंतर",
+    "themeToggle": "थीम बदला",
+    "languageToggle": "English",
+    "login": "लॉगिन",
+    "dashboard": "डॅशबोर्ड",
+    "admin": "प्रशासन"
+  },
+  "hero": {
+    "tagline": "डिजिटल सेवा, स्मार्ट नगरपरिषद"
+  },
+  "services": {
+    "propertyTax": "मालमत्ता कर भरणे",
+    "complaint": "तक्रार नोंदवा",
+    "certificate": "जन्म आणि मृत्यू प्रमाणपत्र",
+    "waterBill": "पाणी बिल भरणे",
+    "tradeLicense": "व्यवसाय परवाना",
+    "trackStatus": "स्थिती तपासा",
+    "sla": "{{days}} दिवसांत हमी निराकरण"
+  }
+}

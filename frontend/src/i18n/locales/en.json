@@ -1,0 +1,24 @@
+{
+  "header": {
+    "skipToContent": "Skip to content",
+    "fontSize": "Font Size",
+    "letterSpacing": "Letter Spacing",
+    "themeToggle": "Toggle Theme",
+    "languageToggle": "मराठी",
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "admin": "Admin"
+  },
+  "hero": {
+    "tagline": "Digital Seva, Smart Nagar Parishad"
+  },
+  "services": {
+    "propertyTax": "Property Tax Payment",
+    "complaint": "Register Complaint",
+    "certificate": "Birth & Death Certificate",
+    "waterBill": "Water Bill Payment",
+    "tradeLicense": "Trade License",
+    "trackStatus": "Track Status",
+    "sla": "Guaranteed resolution in {{days}} days"
+  }
+}
