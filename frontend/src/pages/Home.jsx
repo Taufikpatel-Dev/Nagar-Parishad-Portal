@@ -1,132 +1,185 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Header from '../components/Header';
 import { useMunicipality } from '../contexts/MunicipalityContext';
-import { FileText, Droplet, FileSignature, Landmark, HelpCircle, Activity } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Landmark, Activity, FileSignature, Droplet, FileText, HelpCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import NewsTicker from '../components/NewsTicker';
 import OfficialsSection from '../components/OfficialsSection';
 import EmergencyPopup from '../components/EmergencyPopup';
 
-// Animation variants
-const pageVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.5, staggerChildren: 0.1 }
+const heroSlides = [
+  {
+    titleMr: 'अभिमानाने नागरिकांची\nसेवा करत आहोत',
+    titleEn: 'Proudly Serving\nOur Citizens',
+    descMr: 'तुमचा विश्वासू नगरसेवा भागीदार — कार्यक्षम, पारदर्शक आणि प्रवेशयोग्य नागरी सेवा पुरवत आहे.',
+    descEn: 'Your trusted civic services partner — delivering efficient, transparent, and accessible governance.',
+    btnLabel: 'ऑनलाइन सेवा →',
+    btnLabelEn: 'Online Services →',
+    btnLink: '/services/property-tax',
+    bg: 'linear-gradient(135deg, #00204A 0%, #1A5F7A 60%, #57C5B6 100%)',
   },
-  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
-};
+  {
+    titleMr: 'डिजिटल इंडिया,\nस्मार्ट नगरपरिषद',
+    titleEn: 'Digital India,\nSmart Municipality',
+    descMr: 'अखंड डिजिटल सेवांचा अनुभव घ्या — कर भरा, तक्रार नोंदवा, सेवांचा मागोवा घ्या सर्व ऑनलाइन.',
+    descEn: 'Experience seamless digital services — pay taxes, file complaints, track services — all online.',
+    btnLabel: 'मालमत्ता कर भरा →',
+    btnLabelEn: 'Pay Property Tax →',
+    btnLink: '/services/property-tax',
+    bg: 'linear-gradient(135deg, #1A5F7A 0%, #00204A 60%, #0D1B2A 100%)',
+  },
+  {
+    titleMr: 'पारदर्शक आणि\nजबाबदार प्रशासन',
+    titleEn: 'Transparent &\nAccountable Governance',
+    descMr: 'माहिती अधिकार, ठराव, अंदाजपत्रके — सर्व नागरिकांसाठी सार्वजनिक.',
+    descEn: 'RTI information, resolutions, budgets — all public for every citizen.',
+    btnLabel: 'तक्रार नोंदवा →',
+    btnLabelEn: 'Register Complaint →',
+    btnLink: '/services/complaint',
+    bg: 'linear-gradient(135deg, #0D1B2A 0%, #1A5F7A 50%, #57C5B6 100%)',
+  },
+];
 
-const itemVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+const tickerItems = [
+  { text: 'मालमत्ता कर ऑनलाइन भरा — सवलतीची शेवटची तारीख ३१ मार्च', isNew: true },
+  { text: 'पाणीपुरवठा वेळापत्रक अद्ययावत केले आहे' },
+  { text: 'नवीन तक्रार निवारण प्रणाली सुरू — ७ दिवसांत हमी निराकरण' },
+  { text: 'जन्म/मृत्यू दाखले आता ऑनलाइन उपलब्ध' },
+];
+
+const pageVariant = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.4 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } }
 };
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { currentMunicipality } = useMunicipality();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const isMr = i18n.language === 'mr';
 
-  if (!currentMunicipality) return <div className="p-8 text-center">Loading...</div>;
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  if (!currentMunicipality) return <div style={{padding:32,textAlign:'center'}}>Loading...</div>;
 
   const services = [
-    { icon: <Landmark size={32} className="text-primary" />, title: t('services.propertyTax'), sla: 30, link: '/services/property-tax' },
-    { icon: <Activity size={32} className="text-primary" />, title: t('services.complaint'), sla: 7, link: '/services/complaint' },
-    { icon: <FileSignature size={32} className="text-primary" />, title: t('services.certificate'), sla: 15, link: '/services/certificate' },
-    { icon: <Droplet size={32} className="text-primary" />, title: t('services.waterBill'), sla: 30, link: '/services/water-bill' },
-    { icon: <FileText size={32} className="text-primary" />, title: t('services.tradeLicense'), sla: 21, link: '/services/trade-license' },
-    { icon: <HelpCircle size={32} className="text-primary" />, title: t('services.trackStatus'), sla: 0, link: '/track' },
+    { icon: <Landmark size={28} />, title: t('services.propertyTax'), sla: 30, link: '/services/property-tax', color: '#FF6B1A' },
+    { icon: <Activity size={28} />, title: t('services.complaint'), sla: 7, link: '/services/complaint', color: '#ef4444' },
+    { icon: <FileSignature size={28} />, title: t('services.certificate'), sla: 15, link: '/services/certificate', color: '#8b5cf6' },
+    { icon: <Droplet size={28} />, title: t('services.waterBill'), sla: 30, link: '/services/water-bill', color: '#0ea5e9' },
+    { icon: <FileText size={28} />, title: t('services.tradeLicense'), sla: 21, link: '/services/trade-license', color: '#10b981' },
+    { icon: <HelpCircle size={28} />, title: t('services.trackStatus'), sla: 0, link: '/track', color: '#6366f1' },
   ];
 
   return (
-    <motion.div 
-      className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900"
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      variants={pageVariant}
-    >
+    <motion.div initial="hidden" animate="visible" exit="exit" variants={pageVariant}>
       <EmergencyPopup />
-      <Header />
-      <NewsTicker />
-      
-      <main id="main-content" className="flex-grow">
-        {/* Hero Section */}
-        <motion.div variants={itemVariant} className="bg-gradient-to-r from-primary to-gray-800 text-white py-12 md:py-16 px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 leading-tight">{t('hero.tagline')}</h2>
-          <p className="text-base md:text-lg opacity-90 max-w-2xl mx-auto px-2">
-            Experience seamless digital civic services from the comfort of your home. 
-            Fast, transparent, and efficient governance.
-          </p>
-        </motion.div>
 
-        {/* Quick Services Grid */}
-        <motion.div variants={itemVariant} className="container mx-auto px-4 -mt-8 relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
-            {services.map((svc, idx) => (
-              <a 
-                key={idx} 
-                href={svc.link}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-1 transition-all border-t-4 border-primary"
-              >
-                <div className="bg-gray-50 dark:bg-gray-700 p-3 md:p-4 rounded-full mb-3 md:mb-4">
-                  {svc.icon}
+      {/* Hero Slider */}
+      <section className="hero-slider">
+        {heroSlides.map((slide, i) => (
+          <div key={i} className={`hero-slide ${i === currentSlide ? 'active' : ''}`} style={{background: slide.bg}}>
+            <div className="slide-overlay">
+              <div className="slide-text">
+                <h2 style={{whiteSpace:'pre-line'}}>{isMr ? slide.titleMr : slide.titleEn}</h2>
+                <p>{isMr ? slide.descMr : slide.descEn}</p>
+                <div className="hero-btns">
+                  <Link to={slide.btnLink} className="hero-btn-primary">
+                    {isMr ? slide.btnLabel : slide.btnLabelEn}
+                  </Link>
                 </div>
-                <h3 className="text-sm md:text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{svc.title}</h3>
-                
-                {svc.sla > 0 && (
-                  <div className="mt-auto pt-2 md:pt-4 w-full">
-                    <span className="inline-block bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-500 text-[10px] md:text-xs px-1 md:px-2 py-1 rounded font-medium border border-yellow-200 dark:border-yellow-700/50">
-                      सेवा हमी: {t('services.sla', { days: svc.sla })}
-                    </span>
-                  </div>
-                )}
-              </a>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Dynamic Stats Strip */}
-        <motion.div variants={itemVariant} className="bg-white dark:bg-gray-800 py-10 md:py-12 mt-12 md:mt-16 border-y border-gray-200 dark:border-gray-700">
-          <div className="container mx-auto px-4">
-            <h3 className="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-primary">Nagar Parishad at a Glance</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-              <div>
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">12,450+</div>
-                <div className="text-xs sm:text-sm text-gray-500 mt-1 md:mt-2">Citizens Served</div>
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">8,920</div>
-                <div className="text-xs sm:text-sm text-gray-500 mt-1 md:mt-2">Complaints Resolved</div>
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">3 Days</div>
-                <div className="text-xs sm:text-sm text-gray-500 mt-1 md:mt-2">Avg Resolution Time</div>
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">{currentMunicipality.ward_count}</div>
-                <div className="text-xs sm:text-sm text-gray-500 mt-1 md:mt-2">Active Wards</div>
               </div>
             </div>
           </div>
-        </motion.div>
-
-        {/* Leadership Section */}
-        <motion.div variants={itemVariant}>
-          <OfficialsSection />
-        </motion.div>
-      </main>
-      
-      {/* Simple Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-8 text-center text-sm">
-        <p>&copy; 2026 {currentMunicipality.name_en}. All rights reserved.</p>
-        <div className="flex justify-center gap-4 mt-4">
-          <a href="#" className="hover:text-white">Privacy Policy</a>
-          <a href="#" className="hover:text-white">Terms of Service</a>
-          <a href="#" className="hover:text-white">Contact Us</a>
+        ))}
+        <button className="slide-nav-btn prev" onClick={() => setCurrentSlide(p => (p - 1 + heroSlides.length) % heroSlides.length)}>
+          <ChevronLeft size={22} />
+        </button>
+        <button className="slide-nav-btn next" onClick={() => setCurrentSlide(p => (p + 1) % heroSlides.length)}>
+          <ChevronRight size={22} />
+        </button>
+        <div className="slide-dots">
+          {heroSlides.map((_, i) => (
+            <button key={i} className={`slide-dot ${i === currentSlide ? 'active' : ''}`} onClick={() => setCurrentSlide(i)} />
+          ))}
         </div>
-      </footer>
+      </section>
+
+      {/* News Ticker */}
+      <div className="ticker-wrap">
+        <div className="ticker-label">
+          <span className="dot-indicator" />
+          {isMr ? 'ताज्या घडामोडी' : 'Latest Updates'}
+        </div>
+        <div className="ticker-track">
+          <div className="ticker-inner">
+            {[...tickerItems, ...tickerItems].map((item, i) => (
+              <span key={i} className="ticker-item">
+                <a href="#">
+                  {item.text}
+                  {item.isNew && <span className="new-badge">NEW</span>}
+                </a>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Officials */}
+      <OfficialsSection />
+
+      {/* Services Section */}
+      <div className="section-title-wrap">
+        <h2 className="section-title">{isMr ? 'नागरिक सेवा' : 'Citizen Services'}</h2>
+        <div className="section-divider" />
+      </div>
+      <div className="services-grid">
+        {services.map((svc, idx) => (
+          <Link key={idx} to={svc.link} className="service-card">
+            <div className="icon" style={{color: svc.color, background: `${svc.color}15`}}>
+              {svc.icon}
+            </div>
+            <h3>{svc.title}</h3>
+            {svc.sla > 0 && (
+              <span className="sla">
+                {isMr ? `सेवा हमी: ${svc.sla} दिवसांत` : `SLA: ${svc.sla} days`}
+              </span>
+            )}
+          </Link>
+        ))}
+      </div>
+
+      {/* Stats Strip */}
+      <div style={{background:'var(--surface)',padding:'48px 1.5rem',borderTop:'1px solid var(--border)',borderBottom:'1px solid var(--border)'}}>
+        <div className="section-title-wrap" style={{margin:'0 0 32px'}}>
+          <h2 className="section-title">{isMr ? 'नगर परिषद दृष्टीक्षेपात' : 'Nagar Parishad at a Glance'}</h2>
+          <div className="section-divider" />
+        </div>
+        <div style={{maxWidth:1000,margin:'0 auto',display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(180px, 1fr))',gap:24,textAlign:'center'}}>
+          <div>
+            <div style={{fontSize:'2.2rem',fontWeight:700,color:'var(--navy)',fontFamily:"'Yeseva One', serif"}}>12,450+</div>
+            <div style={{fontSize:'0.85rem',color:'var(--text3)',marginTop:4}}>{isMr ? 'नागरिक सेवा' : 'Citizens Served'}</div>
+          </div>
+          <div>
+            <div style={{fontSize:'2.2rem',fontWeight:700,color:'var(--navy)',fontFamily:"'Yeseva One', serif"}}>8,920</div>
+            <div style={{fontSize:'0.85rem',color:'var(--text3)',marginTop:4}}>{isMr ? 'तक्रारी निराकरण' : 'Complaints Resolved'}</div>
+          </div>
+          <div>
+            <div style={{fontSize:'2.2rem',fontWeight:700,color:'var(--navy)',fontFamily:"'Yeseva One', serif"}}>3 {isMr ? 'दिवस' : 'Days'}</div>
+            <div style={{fontSize:'0.85rem',color:'var(--text3)',marginTop:4}}>{isMr ? 'सरासरी निराकरण कालावधी' : 'Avg Resolution Time'}</div>
+          </div>
+          <div>
+            <div style={{fontSize:'2.2rem',fontWeight:700,color:'var(--navy)',fontFamily:"'Yeseva One', serif"}}>{currentMunicipality.ward_count || 33}</div>
+            <div style={{fontSize:'0.85rem',color:'var(--text3)',marginTop:4}}>{isMr ? 'सक्रिय वार्ड' : 'Active Wards'}</div>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 };

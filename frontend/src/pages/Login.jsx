@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { useNavigate, Link } from 'react-router-dom';
-import Header from '../components/Header';
 import { useTranslation } from 'react-i18next';
 
 const Login = () => {
@@ -35,7 +34,6 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
-      <Header />
       <div className="flex-grow flex items-center justify-center p-4">
         <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md">
           <h2 className="text-2xl font-bold mb-6 text-center text-primary">{t('header.login')}</h2>

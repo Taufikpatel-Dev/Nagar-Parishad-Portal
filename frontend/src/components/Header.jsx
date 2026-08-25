@@ -3,196 +3,223 @@ import { useTranslation } from 'react-i18next';
 import { useMunicipality } from '../contexts/MunicipalityContext';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import { Phone, PhoneCall, MessageCircle, LogIn, User, Menu, X } from 'lucide-react';
+import { Search, Menu, X, ChevronDown, ChevronRight, Phone, Volume2, LogIn, User, FileText, MessageCircle, Home, Building2, ClipboardList, Newspaper, HandHelping, Users, Download, PhoneCall } from 'lucide-react';
+
+const navItems = [
+  { label: 'मुख्यपृष्ठ', labelEn: 'Home', icon: Home, to: '/' },
+  {
+    label: 'महानगरपालिका', labelEn: 'Corporation', icon: Building2,
+    children: [
+      { label: 'आमच्याबद्दल', labelEn: 'About Us', to: '/about' },
+      { label: 'ध्येय-दृष्टिकोन', labelEn: 'Mission & Vision', to: '/page/mission' },
+      { label: 'शहर माहिती', labelEn: 'City Info', to: '/page/city-info' },
+      { label: 'इतिहास', labelEn: 'History', to: '/page/history' },
+      { label: 'भूमिका-कार्ये', labelEn: 'Roles & Functions', to: '/page/roles' },
+      { label: 'कोण काय आहे', labelEn: 'Who is Who', to: '/page/who-is-who' },
+      { label: 'दृष्टीक्षेपात', labelEn: 'At a Glance', to: '/page/at-a-glance' },
+      { label: 'सार्वजनिक सुट्ट्या', labelEn: 'Public Holidays', to: '/page/holidays' },
+    ]
+  },
+  {
+    label: 'प्रशासन', labelEn: 'Administration', icon: ClipboardList,
+    children: [
+      { label: 'ठराव', labelEn: 'Resolutions', to: '/page/resolutions' },
+      { label: 'अर्थसंकल्प', labelEn: 'Budget', to: '/page/budget' },
+      { label: 'लेखापरीक्षण अहवाल', labelEn: 'Audit Reports', to: '/page/audit' },
+      { label: 'ताळेबंद', labelEn: 'Balance Sheet', to: '/page/balance-sheet' },
+      { label: 'शहर विकास आराखडा', labelEn: 'City Dev Plan', to: '/page/city-dev-plan' },
+      { label: 'कार्यालयीन आदेश', labelEn: 'Office Orders', to: '/page/office-orders' },
+    ]
+  },
+  {
+    label: 'माहिती अधिकार', labelEn: 'RTI', icon: Newspaper,
+    children: [
+      { label: 'माहिती अधिकार कायदा', labelEn: 'RTI Act', to: '/page/rti' },
+      { label: 'कलम ४ माहिती', labelEn: 'Section 4 Info', to: '/page/section4' },
+    ]
+  },
+  {
+    label: 'सेवेचा अधिकार', labelEn: 'Right to Services', icon: HandHelping,
+    children: [
+      { label: 'सेवा हमी कायदा', labelEn: 'Service Guarantee Act', to: '/page/rts' },
+      { label: 'नागरिक सनद', labelEn: 'Citizen Charter', to: '/page/citizen-charter' },
+    ]
+  },
+  {
+    label: 'नागरिक', labelEn: 'Citizens', icon: Users,
+    children: [
+      { label: 'मालमत्ता कर', labelEn: 'Property Tax', to: '/services/property-tax' },
+      { label: 'तक्रार नोंदवा', labelEn: 'Register Complaint', to: '/services/complaint' },
+      { label: 'पाणी बिल', labelEn: 'Water Bill', to: '/services/water-bill' },
+      { label: 'जन्म/मृत्यू दाखला', labelEn: 'Certificate', to: '/services/certificate' },
+      { label: 'व्यवसाय परवाना', labelEn: 'Trade License', to: '/services/trade-license' },
+      { label: 'स्थिती तपासा', labelEn: 'Track Status', to: '/track' },
+    ]
+  },
+  {
+    label: 'प्रकाशन', labelEn: 'Publications', icon: Download,
+    children: [
+      { label: 'ई-न्यूज', labelEn: 'E-News', to: '/page/e-news' },
+      { label: 'भरती', labelEn: 'Recruitment', to: '/page/recruitment' },
+      { label: 'उपलब्धी', labelEn: 'Achievements', to: '/page/achievements' },
+      { label: 'नवीन काय आहे', labelEn: 'What\'s New', to: '/page/whats-new' },
+    ]
+  },
+  {
+    label: 'संपर्क', labelEn: 'Contact', icon: PhoneCall,
+    children: [
+      { label: 'मनपा संपर्क', labelEn: 'Municipal Contact', to: '/page/contact' },
+    ]
+  },
+];
 
 const Header = () => {
   const { t, i18n } = useTranslation();
   const { municipalities, currentMunicipality, setCurrentMunicipality } = useMunicipality();
   const { session } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-  // Font scale logic
-  const changeFontScale = (scale) => {
-    document.documentElement.style.setProperty('--font-scale', scale);
-  };
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
 
-  const toggleHighContrast = () => {
-    document.documentElement.classList.toggle('high-contrast');
+  const isMr = i18n.language === 'mr';
+
+  const setFontScale = (s) => document.documentElement.style.setProperty('--fs-scale', s);
+
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
   };
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'mr' ? 'en' : 'mr';
-    i18n.changeLanguage(newLang);
-  };
-
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle('dark-mode');
-  };
-
-  const handleScreenReader = () => {
-    if ('speechSynthesis' in window) {
-      if (window.speechSynthesis.speaking) {
-        window.speechSynthesis.cancel();
-      } else {
-        const textToRead = document.getElementById('main-content')?.innerText || "No content found to read.";
-        const utterance = new SpeechSynthesisUtterance(textToRead);
-        // Set language based on current i18n
-        utterance.lang = i18n.language === 'mr' ? 'mr-IN' : 'en-US';
-        window.speechSynthesis.speak(utterance);
-      }
-    } else {
-      alert("Text-to-Speech is not supported in this browser.");
-    }
+    i18n.changeLanguage(isMr ? 'en' : 'mr');
   };
 
   if (!currentMunicipality) return null;
 
   return (
-    <header className="w-full shadow-md z-50 bg-white dark:bg-gray-800 transition-colors sticky top-0">
-      {/* Top Utility & A11y Bar */}
-      <div className="bg-primary text-white text-xs sm:text-sm px-4 py-2 flex flex-col md:flex-row justify-between items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap">
-        <div className="flex gap-4 items-center w-full md:w-auto justify-center md:justify-start">
-          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute p-1 bg-white text-primary rounded">{t('header.skipToContent')}</a>
-          <span className="inline-flex items-center gap-1"><Phone size={14}/> {currentMunicipality.helpline_number}</span>
-          <span className="inline-flex items-center gap-1"><PhoneCall size={14}/> {currentMunicipality.toll_free_number}</span>
+    <>
+      {/* Layer 1: Accessibility Bar */}
+      <div className="a11y-bar" role="toolbar" aria-label="Accessibility Controls">
+        <span className="ab-label">अक्षर</span>
+        <div className="ab-group">
+          <button className="ab-btn" onClick={() => setFontScale(0.875)}>अ-</button>
+          <button className="ab-btn active" onClick={() => setFontScale(1)}>अ</button>
+          <button className="ab-btn" onClick={() => setFontScale(1.125)}>अ+</button>
         </div>
-        
-        <div className="flex gap-3 items-center w-full md:w-auto justify-center md:justify-end shrink-0">
-          {/* Accessibility Controls */}
-          <div className="flex bg-white/10 rounded overflow-hidden">
-            <button onClick={() => changeFontScale(0.875)} className="px-2 py-1 hover:bg-white/20 border-r border-white/20" title="Decrease Font">A-</button>
-            <button onClick={() => changeFontScale(1)} className="px-2 py-1 hover:bg-white/20 border-r border-white/20" title="Normal Font">A</button>
-            <button onClick={() => changeFontScale(1.125)} className="px-2 py-1 hover:bg-white/20" title="Increase Font">A+</button>
-          </div>
-          
-          <button onClick={toggleHighContrast} className="hover:bg-black/20 px-2 py-1 rounded border border-white/20" title="High Contrast">
-            ◐ Contrast
-          </button>
-
-          {/* Screen Reader Button */}
-          <button onClick={handleScreenReader} className="hover:bg-black/20 px-2 py-1 rounded border border-white/20" title="Screen Reader / Read Aloud">
-            🔊 {i18n.language === 'mr' ? 'वाचा' : 'Read'}
-          </button>
-
-          <button onClick={toggleLanguage} className="hover:underline font-bold px-2 py-1 border-l pl-3 ml-1 border-white/20">
-            {i18n.language === 'mr' ? 'English' : 'मराठी'}
-          </button>
-          <button onClick={toggleTheme} className="hover:bg-black/20 px-2 py-1 rounded border border-white/20" aria-label={t('header.themeToggle')} title="Dark Mode">
-            🌗
+        <div className="ab-sep" />
+        <span className="ab-label">थीम</span>
+        <div className="ab-group">
+          <button className="ab-btn active" onClick={() => setTheme('light')}>☀ हलकी</button>
+          <button className="ab-btn" onClick={() => setTheme('dark')}>☾ डार्क</button>
+        </div>
+        <div className="ab-sep" />
+        <div className="ab-group">
+          <button className="ab-btn" onClick={toggleLanguage}>
+            🌐 {isMr ? 'English' : 'मराठी'}
           </button>
         </div>
       </div>
 
-      {/* Main Header Area */}
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center relative">
-        
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-primary dark:text-white p-1"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-
-        {/* Logo and Title */}
-        <div className="flex items-center gap-3 flex-1 justify-center md:justify-start">
-          {currentMunicipality.logo_url && (
-            <img src={currentMunicipality.logo_url} alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain bg-gray-100 rounded-full" />
-          )}
-          <div>
-            <h1 className="text-lg md:text-2xl font-bold text-primary dark:text-white leading-tight">
-              {i18n.language === 'mr' ? currentMunicipality.name_mr : currentMunicipality.name_en}
-            </h1>
-            <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Government of Maharashtra</p>
-          </div>
+      {/* Layer 2: Top Strip */}
+      <div className="top-strip">
+        <div className="top-emergency">
+          <span><Phone size={14} /> {currentMunicipality.helpline_number || '02186-222222'}</span>
+          <span><Phone size={14} /> {currentMunicipality.toll_free_number || '1800-222-1111'}</span>
         </div>
+        <div className="top-actions">
+          <button className="ta-btn" onClick={toggleLanguage}>
+            🌐 {isMr ? 'English' : 'मराठी'}
+          </button>
+        </div>
+      </div>
 
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
-          <select 
-            className="border p-2 rounded text-sm bg-gray-50 dark:bg-gray-700 dark:text-white border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary"
-            value={currentMunicipality.id}
-            onChange={(e) => {
-              const selected = municipalities.find(m => m.id === e.target.value);
-              setCurrentMunicipality(selected);
-            }}
-          >
-            {municipalities.map(m => (
-              <option key={m.id} value={m.id}>
-                {i18n.language === 'mr' ? m.name_mr : m.name_en}
-              </option>
-            ))}
-          </select>
-
-          {session ? (
-             <Link to="/dashboard" className="flex items-center gap-1 bg-primary text-white px-4 py-2 rounded shadow hover:bg-opacity-90">
-               <User size={18} /> {t('header.dashboard')}
-             </Link>
-          ) : (
-            <Link to="/login" className="flex items-center gap-1 border border-primary text-primary px-4 py-2 rounded shadow hover:bg-primary hover:text-white transition">
-               <LogIn size={18} /> {t('header.login')}
+      {/* Layer 3: Main Header */}
+      <header className="main-header">
+        <div className="mh-inner">
+          <div className="logo-wrap">
+            <Link to="/" className="logo-img">
+              {currentMunicipality.logo_url ? (
+                <img src={currentMunicipality.logo_url} alt="Logo" />
+              ) : (
+                <span style={{color:'#fff',fontSize:'1.5rem',fontWeight:800}}>
+                  {(currentMunicipality.code || 'NP').substring(0,2).toUpperCase()}
+                </span>
+              )}
             </Link>
-          )}
-        </div>
-      </div>
-
-      {/* Desktop Secondary Nav Bar */}
-      <div className="bg-gray-50 border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600 hidden md:block">
-        <div className="container mx-auto px-4 py-2 flex gap-6 text-sm font-semibold text-gray-700 dark:text-gray-200">
-          <Link to="/" className="hover:text-primary transition">{t('home.title', 'Home')}</Link>
-          <Link to="#" className="hover:text-primary transition">Corporation</Link>
-          <Link to="#" className="hover:text-primary transition">Administration</Link>
-          <Link to="#" className="hover:text-primary transition">Right To Information</Link>
-          <Link to="#" className="hover:text-primary transition">Right to Services</Link>
-          <Link to="#" className="hover:text-primary transition">Publications</Link>
-          <Link to="#" className="hover:text-primary transition">Contact</Link>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-xl border-t border-gray-200 dark:border-gray-700 flex flex-col py-2 z-50 animate-slide-down">
-          
-          <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between">
-            <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">Select City:</span>
-            <select 
-              className="border p-2 rounded text-sm bg-gray-50 dark:bg-gray-700 dark:text-white border-gray-300 dark:border-gray-600 w-3/5"
-              value={currentMunicipality.id}
-              onChange={(e) => {
-                const selected = municipalities.find(m => m.id === e.target.value);
-                setCurrentMunicipality(selected);
-                setMobileMenuOpen(false);
-              }}
-            >
-              {municipalities.map(m => (
-                <option key={m.id} value={m.id}>
-                  {i18n.language === 'mr' ? m.name_mr : m.name_en}
-                </option>
-              ))}
-            </select>
+            <div className="logo-text">
+              <h1>{isMr ? currentMunicipality.name_mr : currentMunicipality.name_en}</h1>
+              <p>महाराष्ट्र सरकार</p>
+            </div>
           </div>
 
-          <div className="flex flex-col text-base font-semibold text-gray-800 dark:text-gray-200">
-            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-50 dark:border-gray-700">{t('home.title', 'Home')}</Link>
-            <Link to="#" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-50 dark:border-gray-700">Corporation</Link>
-            <Link to="#" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-50 dark:border-gray-700">Right to Services</Link>
-            <Link to="#" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700">Contact</Link>
+          <div style={{position:'relative',maxWidth:420,width:'100%'}}>
+            <div className="hdr-search">
+              <input type="search" placeholder={isMr ? 'सेवा, निविदा, बातम्या शोधा…' : 'Search services, tenders…'} />
+              <button><Search size={18} /></button>
+            </div>
           </div>
 
-          <div className="px-4 py-4 mt-2 border-t border-gray-100 dark:border-gray-700">
+          <div className="hdr-actions">
             {session ? (
-              <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 bg-primary text-white px-4 py-3 rounded-lg shadow font-bold w-full">
-                <User size={20} /> {t('header.dashboard')}
+              <Link to="/dashboard" className="ha-btn">
+                <User size={18} /> <span>{isMr ? 'डॅशबोर्ड' : 'Dashboard'}</span>
               </Link>
             ) : (
-              <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 border-2 border-primary text-primary dark:text-white dark:border-white px-4 py-3 rounded-lg shadow font-bold w-full">
-                <LogIn size={20} /> {t('header.login')}
+              <Link to="/login" className="ha-btn">
+                <LogIn size={18} /> <span>{isMr ? 'लॉगिन' : 'Login'}</span>
               </Link>
             )}
+            <Link to="/services/complaint" className="ha-btn">
+              <MessageCircle size={18} /> <span>{isMr ? 'तक्रार' : 'Complaint'}</span>
+            </Link>
           </div>
         </div>
-      )}
-    </header>
+
+        {/* Navigation Bar */}
+        <nav className="nav-bar" aria-label="Primary Navigation">
+          <div className="nav-inner">
+            <ul className={`main-nav ${mobileMenuOpen ? 'open' : ''}`}>
+              {navItems.map((item, i) => (
+                <li key={i}
+                  onClick={() => {
+                    if (item.children && mobileMenuOpen) {
+                      setOpenMobileSubmenu(openMobileSubmenu === i ? null : i);
+                    }
+                  }}
+                  className={openMobileSubmenu === i ? 'open' : ''}
+                >
+                  {item.to && !item.children ? (
+                    <Link to={item.to} onClick={() => setMobileMenuOpen(false)}>
+                      {item.icon && <item.icon size={15} />}
+                      {isMr ? item.label : item.labelEn}
+                    </Link>
+                  ) : (
+                    <a href="#" onClick={e => e.preventDefault()}>
+                      {item.icon && <item.icon size={15} />}
+                      {isMr ? item.label : item.labelEn}
+                      <ChevronDown size={12} />
+                    </a>
+                  )}
+                  {item.children && (
+                    <ul className="submenu">
+                      {item.children.map((child, j) => (
+                        <li key={j}>
+                          <Link to={child.to} onClick={() => setMobileMenuOpen(false)}>
+                            <ChevronRight size={14} />
+                            {isMr ? child.label : child.labelEn}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <button className="mob-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 };
 
