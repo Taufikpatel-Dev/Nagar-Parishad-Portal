@@ -33,7 +33,7 @@ const ApplyService = () => {
     <div className="flex-1 bg-slate-50 pb-16">
       
       {/* Page Header */}
-      <div className="bg-[#0F172A] text-white pt-8 pb-12">
+      <div className="bg-[var(--color-gov-navy)] text-white pt-8 pb-12">
         <div className="max-w-4xl mx-auto px-4">
           <Link to="/services" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-4">
             <ArrowLeft size={16} /> सेवा सूचीवर परत जा

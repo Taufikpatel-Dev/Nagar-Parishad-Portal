@@ -62,7 +62,7 @@ const Dashboard = () => {
     <div className="flex-1 bg-slate-50">
       
       {/* Dashboard Header */}
-      <div className="bg-[#0F172A] text-white pt-8 pb-16">
+      <div className="bg-[var(--color-gov-navy)] text-white pt-8 pb-16">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h1 className="text-2xl md:text-3xl font-bold font-marathi mb-1">नमस्कार, रमेश पाटील!</h1>

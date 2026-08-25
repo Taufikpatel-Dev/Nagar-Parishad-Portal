@@ -39,7 +39,7 @@ const Login = () => {
     <div className="flex-1 flex bg-slate-50 relative overflow-hidden">
       
       {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-80 bg-[#0F172A] -z-0 rounded-b-[40px] md:rounded-b-[80px]"></div>
+      <div className="absolute top-0 left-0 w-full h-80 bg-[var(--color-gov-navy)] -z-0 rounded-b-[40px] md:rounded-b-[80px]"></div>
       
       <div className="w-full max-w-5xl mx-auto px-4 py-12 lg:py-20 flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center relative z-10">
         

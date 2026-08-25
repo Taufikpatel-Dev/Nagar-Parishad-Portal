@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gov-navy: #0F172A;
-  --color-gov-navy-light: #1E293B;
+  --color-gov-navy: #004699;
+  --color-gov-navy-light: #005bb5;
   --color-gov-green: #15803D;
   --color-gov-green-light: #16A34A;
   --color-gov-saffron: #F97316;
@@ -11,7 +11,7 @@
   --color-gov-bg: #F8FAFC;
   --color-gov-surface: #FFFFFF;
   --color-gov-border: #E2E8F0;
-  --color-gov-text: #0F172A;
+  --color-gov-text: var(--color-gov-navy);
   --color-gov-text-muted: #64748B;
   
   --font-sans: 'Inter', 'Noto Sans Devanagari', sans-serif;

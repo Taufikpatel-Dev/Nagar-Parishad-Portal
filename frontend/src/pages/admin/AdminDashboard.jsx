@@ -55,8 +55,8 @@ const AdminDashboard = () => {
     <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
       
       {/* Sidebar */}
-      <aside className={`bg-[#0F172A] text-slate-300 w-64 shrink-0 flex flex-col transition-all duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full absolute z-50 h-full'}`}>
-        <div className="h-16 flex items-center px-4 border-b border-slate-800 shrink-0 bg-[#0F172A] z-20">
+      <aside className={`bg-[var(--color-gov-navy)] text-slate-300 w-64 shrink-0 flex flex-col transition-all duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full absolute z-50 h-full'}`}>
+        <div className="h-16 flex items-center px-4 border-b border-slate-800 shrink-0 bg-[var(--color-gov-navy)] z-20">
           <Building className="text-[#16A34A] mr-2" size={24} />
           <h1 className="text-white font-bold text-lg font-marathi tracking-wide truncate">नगर परिषद ॲडमिन</h1>
         </div>

@@ -25,7 +25,7 @@ const Home = () => {
     <div className="flex flex-col min-h-screen">
       
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#0F172A] text-white pt-20 pb-28 px-4 overflow-hidden border-b-4 border-[#15803D]">
+      <section className="relative bg-[var(--color-gov-navy)] text-white pt-20 pb-28 px-4 overflow-hidden border-b-4 border-[#15803D]">
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
         
@@ -93,7 +93,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
               <Link key={i} to={service.to} className="gov-card p-6 flex items-start gap-5 group">
-                <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center text-[#0F172A] shrink-0 group-hover:bg-[#0F172A] group-hover:text-white transition-colors">
+                <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center text-[var(--color-gov-navy)] shrink-0 group-hover:bg-[var(--color-gov-navy)] group-hover:text-white transition-colors">
                   <service.icon size={26} />
                 </div>
                 <div className="flex-1">
@@ -157,7 +157,7 @@ const Home = () => {
             </div>
 
             {/* Grievance / Complaint */}
-            <div className="bg-[#0F172A] rounded-2xl p-8 shadow-lg text-white relative overflow-hidden">
+            <div className="bg-[var(--color-gov-navy)] rounded-2xl p-8 shadow-lg text-white relative overflow-hidden">
               <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/5 rounded-tl-full -z-0"></div>
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-center gap-3 mb-6">
@@ -216,7 +216,7 @@ const Home = () => {
               <div className="divide-y divide-slate-100">
                 {[1, 2, 3, 4].map((_, i) => (
                   <div key={i} className="p-5 flex items-start gap-4 hover:bg-slate-50 transition-colors">
-                    <div className="flex flex-col items-center justify-center bg-slate-100 text-[#0F172A] rounded-lg w-14 h-14 shrink-0 border border-slate-200">
+                    <div className="flex flex-col items-center justify-center bg-slate-100 text-[var(--color-gov-navy)] rounded-lg w-14 h-14 shrink-0 border border-slate-200">
                       <span className="text-xl font-bold leading-none mb-1">२४</span>
                       <span className="text-xs uppercase font-semibold">ऑगस्ट</span>
                     </div>
@@ -239,7 +239,7 @@ const Home = () => {
             
             {/* 6. MUNICIPALITY INFO (STATS) & MAYOR */}
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-[#0F172A] to-[#1E293B] rounded-xl shadow-sm border border-slate-700 p-6 text-white">
+              <div className="bg-gradient-to-br from-[var(--color-gov-navy)] to-[var(--color-gov-navy-light)] rounded-xl shadow-sm border border-slate-700 p-6 text-white">
                 <h3 className="text-lg font-bold font-marathi mb-6 border-b border-white/10 pb-3">नगर परिषद दृष्टीक्षेपात</h3>
                 <div className="grid grid-cols-2 gap-y-6 gap-x-4">
                   <div>

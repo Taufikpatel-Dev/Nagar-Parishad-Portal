@@ -4,7 +4,7 @@ import { Building, MapPin, Phone, Mail, ExternalLink, ChevronRight } from 'lucid
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0F172A] text-slate-300 pt-16 pb-8 border-t-4 border-[#F97316] font-sans">
+    <footer className="bg-[var(--color-gov-navy)] text-slate-300 pt-16 pb-8 border-t-4 border-[#F97316] font-sans">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         
         {/* Top Section */}
